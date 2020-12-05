@@ -12,6 +12,18 @@ async function addItem(req, res) {
   }
 }
 
+async function getList(req, res) {
+  try {
+    Item.find({}, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
 module.exports = {
   addItem,
+  getList,
 };
