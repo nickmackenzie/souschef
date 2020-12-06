@@ -6,6 +6,7 @@ import { InputText } from "primereact/inputtext";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
+import { Toast } from "primereact/toast";
 
 class ItemInput extends Component {
   state = {
@@ -49,9 +50,14 @@ class ItemInput extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.formReset();
     try {
+      this.toast.show({
+        severity: "success",
+        detail: "Item Added",
+      });
       await itemService.addItem(this.state);
-      this.formReset();
+
       // Let <App> know a user has signed up!
       // Successfully signed up - show GamePage
     } catch (err) {
@@ -80,114 +86,117 @@ class ItemInput extends Component {
     ];
 
     return (
-      <Card className="itemInput">
-        <form onSubmit={this.handleSubmit}>
-          Add A Item
-          <InputText
-            type="text"
-            placeholder="Item"
-            value={this.state.item}
-            name="item"
-            onChange={this.handleChange}
-          ></InputText>
-          <label>Category</label>
-          <Dropdown
-            value={this.state.category}
-            options={categoryItems}
-            name="category"
-            onChange={this.handleChange}
-          />
-          <label>Unit</label>
-          <Dropdown
-            value={this.state.unit}
-            options={unitItems}
-            name="unit"
-            onChange={this.handleChange}
-          />
-          <div className="par-wrap">
-            <div>
-              <label>Sunday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Sunday}
-                name="Sunday"
-                onChange={this.handleChange}
-              ></InputText>
+      <div>
+        <Toast ref={(el) => (this.toast = el)} position="top-left"></Toast>
+        <Card className="itemInput">
+          <form onSubmit={this.handleSubmit}>
+            Add A Item
+            <InputText
+              type="text"
+              placeholder="Item"
+              value={this.state.item}
+              name="item"
+              onChange={this.handleChange}
+            ></InputText>
+            <label>Category</label>
+            <Dropdown
+              value={this.state.category}
+              options={categoryItems}
+              name="category"
+              onChange={this.handleChange}
+            />
+            <label>Unit</label>
+            <Dropdown
+              value={this.state.unit}
+              options={unitItems}
+              name="unit"
+              onChange={this.handleChange}
+            />
+            <div className="par-wrap">
+              <div>
+                <label>Sunday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Sunday}
+                  name="Sunday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div>
+                <label>Monday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Monday}
+                  name="Monday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div>
+                <label>Tuesday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Tuesday}
+                  name="Tuesday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div>
+                <label>Wednesday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Wednesday}
+                  name="Wednesday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div>
+                <label>Thursday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Thursday}
+                  name="Thursday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div>
+                <label>Friday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Friday}
+                  name="Friday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div>
+                <label>Saturday </label>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Saturday}
+                  name="Saturday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
             </div>
-            <div>
-              <label>Monday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Monday}
-                name="Monday"
-                onChange={this.handleChange}
-              ></InputText>
+            <div className="p-mt-4">
+              <Button disabled={this.isFormInvalid()}>Submit</Button>
             </div>
-            <div>
-              <label>Tuesday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Tuesday}
-                name="Tuesday"
-                onChange={this.handleChange}
-              ></InputText>
-            </div>
-            <div>
-              <label>Wednesday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Wednesday}
-                name="Wednesday"
-                onChange={this.handleChange}
-              ></InputText>
-            </div>
-            <div>
-              <label>Thursday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Thursday}
-                name="Thursday"
-                onChange={this.handleChange}
-              ></InputText>
-            </div>
-            <div>
-              <label>Friday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Friday}
-                name="Friday"
-                onChange={this.handleChange}
-              ></InputText>
-            </div>
-            <div>
-              <label>Saturday </label>
-              <InputText
-                className="par-day"
-                type="number"
-                placeholder="0"
-                value={this.state.Saturday}
-                name="Saturday"
-                onChange={this.handleChange}
-              ></InputText>
-            </div>
-          </div>
-          <div className="p-mt-4">
-            <Button disabled={this.isFormInvalid()}>Submit</Button>
-          </div>
-        </form>
-      </Card>
+          </form>
+        </Card>
+      </div>
     );
   }
 }

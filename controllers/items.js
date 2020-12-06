@@ -10,14 +10,9 @@ async function addItem(req, res) {
 }
 
 async function getItems(req, res) {
-  try {
-    Item.find({}, function (err, result) {
-      if (err) throw err;
-      res.json(result);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  const items = await Item.find({});
+  console.log(items);
+  res.json(items);
 }
 
 module.exports = {

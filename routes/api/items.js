@@ -8,6 +8,7 @@ const user = require("../../models/user");
 router.post("/addItem", itemCtrl.addItem);
 
 router.get("/getItems", itemCtrl.getItems);
+
 // router.post("/addItem", async (req, res) => {
 //   const item = new Item(req.body);
 //   try {
@@ -17,4 +18,5 @@ router.get("/getItems", itemCtrl.getItems);
 //     res.status(400).send(err);
 //   }
 // });
+
 module.exports = router;

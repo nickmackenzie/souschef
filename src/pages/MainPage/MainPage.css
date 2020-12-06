@@ -2,3 +2,22 @@
   min-width: 200px;
   margin: 20px;
 }
+
+table.customTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #333333;
+  border-style: solid;
+  color: #333333;
+  border-radius: 5px;
+}
+
+table.customTable td,
+table.customTable th {
+  border-width: 2px;
+  border-color: #333333;
+  border-style: solid;
+  padding: 5px;
+}

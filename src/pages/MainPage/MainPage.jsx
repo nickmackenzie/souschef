@@ -1,17 +1,31 @@
 import React, { Component } from "react";
 import "./MainPage.css";
 import PrepList from "../../components/PrepList/PrepList";
+import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
 
 const MainPage = (props) => {
   let main = props.user ? (
     <div>
-      <Card className="card">
+      <Panel header={props.day}>
         <div className="prep-list-wrap box">
-          <h1>{props.day}'s List</h1>
+          <table className="customTable">
+            <tbody>
+              <tr>
+                <th>Item</th>
+                <th>Stock</th>
+                <th>Par Level</th>
+              </tr>
+              <tr>
+                <td>Bread</td>
+                <td>1</td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
           <PrepList />
         </div>
-      </Card>
+      </Panel>
       <Card className="card">
         <div className="delivery-wrap box">Deliveries</div>
       </Card>

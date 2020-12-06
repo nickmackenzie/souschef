@@ -13,16 +13,23 @@ import "primereact/resources/themes/nova-alt/theme.css";
 import "primeicons/primeicons.css";
 import ItemInput from "../ItemInput/ItemInput";
 import MakeList from "../MakeList/MakeList";
+import itemService from "../../utilities/itemService";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { user: userService.getUser(), day: null };
+    this.state = {
+      user: userService.getUser(),
+      day: null,
+      list: itemService.findItems(),
+    };
   }
 
+  // Handlers
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
   };
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -39,6 +46,7 @@ class App extends Component {
       "Saturday",
       "Sunday",
     ];
+
     var date = new Date();
     var day = date.getDay();
     var today = weekday[day];
