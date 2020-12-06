@@ -9,3 +9,8 @@ form {
   justify-content: center;
   margin-top: 10px;
 }
+
+.par-wrap {
+  display: flex;
+  flex-direction: column;
+}

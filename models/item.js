@@ -7,12 +7,17 @@ const itemSchema = new mongoose.Schema({
     type: String,
     enum: ["meat", "dairy", "produce", "dry goods", "other"],
   },
-  stock: String,
-  parLevel: String,
   unit: {
     type: String,
     enum: ["kg", "grams", "oz", "lbs", "fl oz", "litre", "pieces"],
   },
+  Sunday: Number,
+  Monday: Number,
+  Tuesday: Number,
+  Wednesday: Number,
+  Thursday: Number,
+  Friday: Number,
+  Saturday: Number,
 });
 
 module.exports = mongoose.model("Item", itemSchema);

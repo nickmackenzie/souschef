@@ -10,10 +10,15 @@ import { Dropdown } from "primereact/dropdown";
 class ItemInput extends Component {
   state = {
     item: "",
-    stock: "",
     unit: "",
     category: "",
-    parLevel: "",
+    Sunday: "",
+    Monday: "",
+    Tuesday: "",
+    Wednesday: "",
+    Thursday: "",
+    Friday: "",
+    Saturday: "",
   };
 
   handleChange = (e) => {
@@ -24,22 +29,21 @@ class ItemInput extends Component {
   };
 
   isFormInvalid() {
-    return !(
-      this.state.item &&
-      this.state.stock &&
-      this.state.unit &&
-      this.state.category &&
-      this.state.parLevel
-    );
+    return !(this.state.item && this.state.unit && this.state.category);
   }
 
   formReset = () => {
     this.setState({
       item: "",
-      stock: "",
       unit: "",
       category: "",
-      parLevel: "",
+      Sunday: "",
+      Monday: "",
+      Tuesday: "",
+      Wednesday: "",
+      Thursday: "",
+      Friday: "",
+      Saturday: "",
     });
   };
 
@@ -74,11 +78,11 @@ class ItemInput extends Component {
       { label: "Dry Goods", value: "dry goods" },
       { label: "Other", value: "other" },
     ];
+
     return (
       <Card className="itemInput">
         <form onSubmit={this.handleSubmit}>
-          Add A Item<br></br>
-          <label>Item:</label>
+          Add A Item
           <InputText
             type="text"
             placeholder="Item"
@@ -93,14 +97,6 @@ class ItemInput extends Component {
             name="category"
             onChange={this.handleChange}
           />
-          <label>Stock</label>
-          <InputText
-            type="text"
-            placeholder="Stock"
-            value={this.state.stock}
-            name="stock"
-            onChange={this.handleChange}
-          ></InputText>
           <label>Unit</label>
           <Dropdown
             value={this.state.unit}
@@ -108,14 +104,78 @@ class ItemInput extends Component {
             name="unit"
             onChange={this.handleChange}
           />
-          <label>Par Level</label>
-          <InputText
-            type="text"
-            placeholder="Par Level"
-            value={this.state.parLevel}
-            name="parLevel"
-            onChange={this.handleChange}
-          ></InputText>
+          <div className="par-wrap">
+            <div>
+              <label>Sunday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Sunday}
+                name="Sunday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+            <div>
+              <label>Monday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Monday}
+                name="Monday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+            <div>
+              <label>Tuesday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Tuesday}
+                name="Tuesday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+            <div>
+              <label>Wednesday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Wednesday}
+                name="Wednesday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+            <div>
+              <label>Thursday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Thursday}
+                name="Thursday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+            <div>
+              <label>Friday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Friday}
+                name="Friday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+            <div>
+              <label>Saturday Par Level </label>
+              <InputText
+                type="number"
+                placeholder="0"
+                value={this.state.Saturday}
+                name="Saturday"
+                onChange={this.handleChange}
+              ></InputText>
+            </div>
+          </div>
           <div className="p-mt-4">
             <Button disabled={this.isFormInvalid()}>Submit</Button>
           </div>
