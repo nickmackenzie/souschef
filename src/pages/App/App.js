@@ -16,7 +16,7 @@ import ItemInput from "../ItemInput/ItemInput";
 class App extends Component {
   constructor() {
     super();
-    this.state = { user: userService.getUser(), screen: null };
+    this.state = { user: userService.getUser(), day: null };
   }
 
   handleSignupOrLogin = () => {
@@ -26,16 +26,43 @@ class App extends Component {
     userService.logout();
     this.setState({ user: null });
   };
+
+  getDayOfWeek = () => {
+    const weekday = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ];
+    var date = new Date();
+    var day = date.getDay();
+    var today = weekday[day];
+    this.setState({ day: today });
+  };
+
+  async componentDidMount() {
+    this.getDayOfWeek();
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>SousChef</h1>
         <NavBar user={this.state.user} handleLogout={this.handleLogout} />
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <MainPage user={this.state.user} className="main" />}
+            render={() => (
+              <MainPage
+                user={this.state.user}
+                className="main"
+                day={this.state.day}
+              />
+            )}
           />
           <Route
             exact

@@ -1,18 +1,24 @@
 import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
+import "./NavBar.css";
 import ItemInput from "../../pages/ItemInput/ItemInput";
 
 const NavBar = (props) => {
   let nav = props.user ? (
-    <div>
-      <Link to="" className="NavBar-link" onClick={props.handleLogout}>
-        LOG OUT
-      </Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <span className="NavBar-welcome">WELCOME, {props.user.name}</span>
-      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to="/iteminput">Item Input</Link>
-    </div>
+    <nav className="navWrap">
+      <div className="logo">SousChef</div>
+      <div className="links">
+        <Link className="NavBar-link" to="/">
+          Home
+        </Link>
+        <Link className="NavBar-link" to="/iteminput">
+          Item Input
+        </Link>
+        <Link to="" className="NavBar-link" onClick={props.handleLogout}>
+          Log Out
+        </Link>
+      </div>
+    </nav>
   ) : (
     <div>
       <Link to="/login" className="NavBar-link">

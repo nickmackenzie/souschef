@@ -1,0 +1,21 @@
+.navWrap {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+
+  padding: 2px;
+  text-decoration: none;
+}
+.logo {
+  font-size: 2rem;
+}
+.NavBar-link {
+  margin: 10px;
+  text-decoration: none;
+}

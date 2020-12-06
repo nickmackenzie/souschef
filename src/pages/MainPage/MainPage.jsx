@@ -8,7 +8,7 @@ const MainPage = (props) => {
     <div>
       <Card className="card">
         <div className="prep-list-wrap box">
-          <h1>Today:</h1>
+          <h1>{props.day}'s List</h1>
           <PrepList />
         </div>
       </Card>

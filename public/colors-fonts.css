@@ -3,7 +3,7 @@
 
 /* Global reset and font family set */
 * {
-  font-family: var(--font-roboto);
+  font-family: var(--font-poppins);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -11,7 +11,7 @@
 
 :root {
   /* Colors */
-  --main-bg-color: #10002B;
+  --main-bg-color: #10002b;
   --box-color: #e0aaff;
   --font-color: #424242;
   --second-font: #727272;
