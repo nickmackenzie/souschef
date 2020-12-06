@@ -5,6 +5,7 @@ import "./ItemInput.css";
 import { InputText } from "primereact/inputtext";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
 
 class ItemInput extends Component {
   state = {
@@ -56,10 +57,27 @@ class ItemInput extends Component {
   };
 
   render() {
+    const unitItems = [
+      { label: "Kg", value: "kg" },
+      { label: "Grams", value: "grams" },
+      { label: "Oz", value: "oz" },
+      { label: "Lbs", value: "lbs" },
+      { label: "Fl Oz", value: "fl oz" },
+      { label: "Litre", value: "litre" },
+      { label: "Pieces", value: "pieces" },
+    ];
+
+    const categoryItems = [
+      { label: "Meat", value: "meat" },
+      { label: "Dairy", value: "dairy" },
+      { label: "Produce", value: "produce" },
+      { label: "Dry Goods", value: "dry goods" },
+      { label: "Other", value: "other" },
+    ];
     return (
       <Card className="itemInput">
         <form onSubmit={this.handleSubmit}>
-          Input Your Items!<br></br>
+          Add A Item<br></br>
           <label>Item:</label>
           <InputText
             type="text"
@@ -69,13 +87,12 @@ class ItemInput extends Component {
             onChange={this.handleChange}
           ></InputText>
           <label>Category</label>
-          <InputText
-            type="text"
-            placeholder="Category"
+          <Dropdown
             value={this.state.category}
+            options={categoryItems}
             name="category"
             onChange={this.handleChange}
-          ></InputText>
+          />
           <label>Stock</label>
           <InputText
             type="text"
@@ -85,13 +102,12 @@ class ItemInput extends Component {
             onChange={this.handleChange}
           ></InputText>
           <label>Unit</label>
-          <InputText
-            type="text"
-            placeholder="Unit"
+          <Dropdown
             value={this.state.unit}
+            options={unitItems}
             name="unit"
             onChange={this.handleChange}
-          ></InputText>
+          />
           <label>Par Level</label>
           <InputText
             type="text"
@@ -100,17 +116,10 @@ class ItemInput extends Component {
             name="parLevel"
             onChange={this.handleChange}
           ></InputText>
-          <div>
-            {" "}
-            <Button className="p-text-center" disabled={this.isFormInvalid()}>
-              Submit
-            </Button>
+          <div className="p-mt-4">
+            <Button disabled={this.isFormInvalid()}>Submit</Button>
           </div>
         </form>
-
-        <Link to="/">
-          <br></br>Home
-        </Link>
       </Card>
     );
   }

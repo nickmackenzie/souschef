@@ -22,11 +22,11 @@ const NavBar = (props) => {
   ) : (
     <div>
       <Link to="/login" className="NavBar-link">
-        LOG IN
+        Log In
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to="/register" className="NavBar-link">
-        SIGN UP
+        Create Account
       </Link>
     </div>
   );

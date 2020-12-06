@@ -8,10 +8,12 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+body {
+  background-color: var(--main-bg-color);
+}
 :root {
   /* Colors */
-  --main-bg-color: #10002b;
+  --main-bg-color: #f7f7f7;
   --box-color: #e0aaff;
   --font-color: #424242;
   --second-font: #727272;
