@@ -106,8 +106,9 @@ class ItemInput extends Component {
           />
           <div className="par-wrap">
             <div>
-              <label>Sunday Par Level </label>
+              <label>Sunday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Sunday}
@@ -116,8 +117,9 @@ class ItemInput extends Component {
               ></InputText>
             </div>
             <div>
-              <label>Monday Par Level </label>
+              <label>Monday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Monday}
@@ -126,8 +128,9 @@ class ItemInput extends Component {
               ></InputText>
             </div>
             <div>
-              <label>Tuesday Par Level </label>
+              <label>Tuesday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Tuesday}
@@ -136,8 +139,9 @@ class ItemInput extends Component {
               ></InputText>
             </div>
             <div>
-              <label>Wednesday Par Level </label>
+              <label>Wednesday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Wednesday}
@@ -146,8 +150,9 @@ class ItemInput extends Component {
               ></InputText>
             </div>
             <div>
-              <label>Thursday Par Level </label>
+              <label>Thursday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Thursday}
@@ -156,8 +161,9 @@ class ItemInput extends Component {
               ></InputText>
             </div>
             <div>
-              <label>Friday Par Level </label>
+              <label>Friday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Friday}
@@ -166,8 +172,9 @@ class ItemInput extends Component {
               ></InputText>
             </div>
             <div>
-              <label>Saturday Par Level </label>
+              <label>Saturday </label>
               <InputText
+                className="par-day"
                 type="number"
                 placeholder="0"
                 value={this.state.Saturday}

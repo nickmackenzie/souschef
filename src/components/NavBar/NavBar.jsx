@@ -14,6 +14,9 @@ const NavBar = (props) => {
         <Link className="NavBar-link" to="/iteminput">
           Item Input
         </Link>
+        <Link className="NavBar-link" to="/makelist">
+          New List
+        </Link>
         <Link to="" className="NavBar-link" onClick={props.handleLogout}>
           Log Out
         </Link>

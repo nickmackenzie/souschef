@@ -11,6 +11,13 @@
 body {
   background-color: var(--main-bg-color);
 }
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 :root {
   /* Colors */
   --main-bg-color: #f7f7f7;

@@ -1,5 +1,14 @@
+body {
+  margin: -10px;
+  padding: -1px;
+  box-sizing: border-box;
+}
+
 .App {
   position: relative;
   display: grid;
   place-items: center;
+
+  background-image: url("../../images/wave-top.svg");
+  background-size: cover;
 }

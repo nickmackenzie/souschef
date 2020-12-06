@@ -12,6 +12,7 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/nova-alt/theme.css";
 import "primeicons/primeicons.css";
 import ItemInput from "../ItemInput/ItemInput";
+import MakeList from "../MakeList/MakeList";
 
 class App extends Component {
   constructor() {
@@ -88,6 +89,11 @@ class App extends Component {
             exact
             path="/iteminput"
             render={({ history }) => <ItemInput history={history} />}
+          />
+          <Route
+            exact
+            path="/makelist"
+            render={({ history }) => <MakeList history={history} />}
           />
         </Switch>
       </div>

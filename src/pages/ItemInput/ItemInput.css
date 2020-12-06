@@ -13,4 +13,13 @@ form {
 .par-wrap {
   display: flex;
   flex-direction: column;
+  align-items: left;
+}
+
+div {
+  margin: 2px;
+}
+
+.par-day {
+  max-width: 60px;
 }
