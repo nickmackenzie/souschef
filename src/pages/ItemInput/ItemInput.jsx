@@ -78,11 +78,11 @@ class ItemInput extends Component {
     ];
 
     const categoryItems = [
-      { label: "Meat", value: "meat" },
-      { label: "Dairy", value: "dairy" },
-      { label: "Produce", value: "produce" },
-      { label: "Dry Goods", value: "dry goods" },
-      { label: "Other", value: "other" },
+      { label: "🍗 Meat", value: "meat" },
+      { label: "🐮 Dairy", value: "dairy" },
+      { label: "🥦 Produce", value: "produce" },
+      { label: "🍞 Dry Goods", value: "dry goods" },
+      { label: "🛒 Other", value: "other" },
     ];
 
     return (
