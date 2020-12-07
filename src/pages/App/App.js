@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+import axios from "axios";
 
-import { Link, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
 import NavBar from "../../components/NavBar/NavBar";
@@ -21,7 +22,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       day: null,
-      list: itemService.findItems(),
+      items: null,
     };
   }
 
@@ -53,10 +54,24 @@ class App extends Component {
     this.setState({ day: today });
   };
 
+  getItems = () => {
+    axios
+      .get("api/items/getItems")
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        this.setState({ items: data });
+      })
+      .catch(() => {
+        alert("err");
+      });
+  };
+
   async componentDidMount() {
     this.getDayOfWeek();
-    const rt = itemService.findItems();
-    console.log(rt);
+    this.getItems();
+    // const rt = itemService.findItems();
+    // console.log(rt);
   }
 
   render() {
@@ -72,6 +87,7 @@ class App extends Component {
                 user={this.state.user}
                 className="main"
                 day={this.state.day}
+                items={this.state.items}
               />
             )}
           />
@@ -103,7 +119,9 @@ class App extends Component {
           <Route
             exact
             path="/makelist"
-            render={({ history }) => <MakeList history={history} />}
+            render={({ history }) => (
+              <MakeList items={this.state.items} history={history} />
+            )}
           />
         </Switch>
       </div>

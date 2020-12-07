@@ -56,7 +56,7 @@ class ItemInput extends Component {
         severity: "success",
         detail: "Item Added",
       });
-      await itemService.addItem(this.state);
+      itemService.addItem(this.state);
 
       // Let <App> know a user has signed up!
       // Successfully signed up - show GamePage

@@ -14,7 +14,7 @@ function addItem(item) {
 }
 
 async function findItems() {
-  return await fetch("/api/items/getItems")
+  return await fetch(BASE_URL + "findItems")
     .then((res) => res.json)
     .then((data) => data);
 }

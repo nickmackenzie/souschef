@@ -41,18 +41,3 @@ const MainPage = (props) => {
 };
 
 export default MainPage;
-
-// class MainPage extends Component {
-//   state = {
-//     name: "",
-//     email: "",
-//     password: "",
-//     passwordConf: "",
-//   };
-
-//   render() {
-//     return <PrepList />;
-//   }
-// }
-
-// export default MainPage;

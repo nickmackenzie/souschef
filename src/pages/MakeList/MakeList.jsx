@@ -1,14 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import itemService from "../../utilities/itemService";
-
-import { InputText } from "primereact/inputtext";
+import axios from "axios";
 import { Card } from "primereact/card";
-import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
 
-class ItemInput extends Component {
-  state = {};
+// const MakeList = (items) => {
+//   let i = 0;
+
+//   return (
+//     <Card>
+// {items.items.map((item) => {
+//   console.log(item.item);
+//   <div>{item.item}</div>;
+// })}
+//     </Card>
+// //   );
+// };
+
+class MakeList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      items: null,
+    };
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -17,63 +32,58 @@ class ItemInput extends Component {
     });
   };
 
-  //   isFormInvalid() {
-  //     return !(this.state.item && this.state.unit && this.state.category);
-  //   }
+  getItems = () => {
+    axios
+      .get("api/items/getItems")
+      .then((response) => {
+        const data = response.data;
+        this.setState({ items: data });
+      })
+      .catch(() => {
+        alert("err");
+      });
+  };
 
-  //   formReset = () => {
-  //     this.setState({
-  //       item: "",
-  //       unit: "",
-  //       category: "",
-  //       Sunday: "",
-  //       Monday: "",
-  //       Tuesday: "",
-  //       Wednesday: "",
-  //       Thursday: "",
-  //       Friday: "",
-  //       Saturday: "",
-  //     });
-  //   };
-
-  //   handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       await itemService.addItem(this.state);
-  //       this.formReset();
-  //       // Let <App> know a user has signed up!
-  //       // Successfully signed up - show GamePage
-  //     } catch (err) {
-  //       // Use a modal or toast in your apps instead of alert
-  //       alert("Invalid Item");
-  //     }
-  //   };
+  componentDidMount() {
+    this.getItems();
+  }
 
   render() {
-    // const unitItems = [
-    //   { label: "Kg", value: "kg" },
-    //   { label: "Grams", value: "grams" },
-    //   { label: "Oz", value: "oz" },
-    //   { label: "Lbs", value: "lbs" },
-    //   { label: "Fl Oz", value: "fl oz" },
-    //   { label: "Litre", value: "litre" },
-    //   { label: "Pieces", value: "pieces" },
-    // ];
-
-    // const categoryItems = [
-    //   { label: "Meat", value: "meat" },
-    //   { label: "Dairy", value: "dairy" },
-    //   { label: "Produce", value: "produce" },
-    //   { label: "Dry Goods", value: "dry goods" },
-    //   { label: "Other", value: "other" },
-    // ];
-
     return (
-      <Card className="itemInput">
-        <form></form>
+      <Card>
+        {this.props.items.map((item) => {
+          let name = item.item;
+          let unit = item.unit;
+          let category = item.category;
+          let sun = item.Sunday;
+          let mon = item.Monday;
+          let tues = item.Tuesday;
+          let wed = item.Wednesday;
+          let thurs = item.Thursday;
+          let fri = item.Friday;
+          let sat = item.Saturday;
+          return (
+            <table className="customTable">
+              <tbody>
+                <tr>
+                  <td>{name}</td>
+                  <td>{category}</td>
+                  <td>{sun}</td>
+                  <td>{mon}</td>
+                  <td>{tues}</td>
+                  <td>{wed}</td>
+                  <td>{thurs}</td>
+                  <td>{fri}</td>
+                  <td>{sat}</td>
+                  <td>{unit}</td>
+                </tr>
+              </tbody>
+            </table>
+          );
+        })}
       </Card>
     );
   }
 }
 
-export default ItemInput;
+export default MakeList;
