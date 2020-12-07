@@ -22,6 +22,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       day: null,
+      tmr: null,
       items: null,
     };
   }
@@ -50,8 +51,13 @@ class App extends Component {
 
     var date = new Date();
     var day = date.getDay();
+    var dayPlusOne = date.getDay() + 1;
+
     var today = weekday[day];
+    var tmr = weekday[dayPlusOne];
+    console.log("hankey", tmr);
     this.setState({ day: today });
+    this.setState({ tmr: tmr });
   };
 
   getItems = () => {
@@ -120,7 +126,11 @@ class App extends Component {
             exact
             path="/makelist"
             render={({ history }) => (
-              <MakeList items={this.state.items} history={history} />
+              <MakeList
+                tmr={this.state.tmr}
+                items={this.state.items}
+                history={history}
+              />
             )}
           />
         </Switch>

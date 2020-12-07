@@ -18,16 +18,15 @@ import { Card } from "primereact/card";
 // };
 
 class MakeList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      items: null,
+      items: [""],
     };
   }
 
   handleChange = (e) => {
     this.setState({
-      // Using ES2015 Computed Property Names
       [e.target.name]: e.target.value,
     });
   };
@@ -51,31 +50,21 @@ class MakeList extends Component {
   render() {
     return (
       <Card>
-        {this.props.items.map((item) => {
+        <h1>Make {this.props.tmr}'s List</h1>
+        {this.state.items.map((item) => {
           let name = item.item;
           let unit = item.unit;
           let category = item.category;
-          let sun = item.Sunday;
-          let mon = item.Monday;
-          let tues = item.Tuesday;
-          let wed = item.Wednesday;
-          let thurs = item.Thursday;
-          let fri = item.Friday;
-          let sat = item.Saturday;
+          let tmrDay = this.props.tmr;
+          let itemDay = item;
+          console.log("fh", itemDay.tmrDay);
+
           return (
             <table className="customTable">
               <tbody>
                 <tr>
                   <td>{name}</td>
-                  <td>{category}</td>
-                  <td>{sun}</td>
-                  <td>{mon}</td>
-                  <td>{tues}</td>
-                  <td>{wed}</td>
-                  <td>{thurs}</td>
-                  <td>{fri}</td>
-                  <td>{sat}</td>
-                  <td>{unit}</td>
+                  <td>{tmrDay}</td>
                 </tr>
               </tbody>
             </table>
