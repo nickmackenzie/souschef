@@ -13,12 +13,12 @@
 
 .logo {
   font-size: 2rem;
-  color: white;
+  color: black;
   font-weight: 700;
 }
 
 .NavBar-link {
   text-decoration: none;
-  color: white;
+  color: black;
   font-weight: 500;
 }

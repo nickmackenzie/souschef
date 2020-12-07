@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 const AddToList = (props) => {
   return (
     <div className="prep-item">
-      <Button>Add To List</Button>
+      <Button label="➕" className="p-button-raised p-button-rounded" />
     </div>
   );
 };

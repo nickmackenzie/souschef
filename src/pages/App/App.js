@@ -55,6 +55,8 @@ class App extends Component {
 
   async componentDidMount() {
     this.getDayOfWeek();
+    const rt = itemService.findItems();
+    console.log(rt);
   }
 
   render() {
