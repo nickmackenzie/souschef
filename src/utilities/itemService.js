@@ -8,13 +8,15 @@ function addItem(item) {
   })
     .then((res) => {
       if (res.ok) return res.json();
-      throw new Error("Email already taken!");
+      throw new Error("Item In Database");
     })
     .then((data) => data);
 }
 
-function findItems() {
-  return fetch("/api/items/getItems").then((res) => res.json);
+async function findItems() {
+  return await fetch("/api/items/getItems")
+    .then((res) => res.json)
+    .then((data) => data);
 }
 
 export default {

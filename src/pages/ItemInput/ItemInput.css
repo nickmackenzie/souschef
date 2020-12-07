@@ -23,3 +23,22 @@ div {
 .par-day {
   max-width: 60px;
 }
+
+table.dateTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #33333382;
+  border-style: solid;
+  color: #333333;
+  border-radius: 5px;
+}
+
+table.dateTable td,
+table.dateTable th {
+  border-width: 2px;
+  border-color: #3333333d;
+  border-style: solid;
+  padding: 2px;
+}
