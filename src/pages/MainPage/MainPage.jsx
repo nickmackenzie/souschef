@@ -5,37 +5,47 @@ import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
 
 const MainPage = (props) => {
-  let main = props.user ? (
-    <div>
-      <Panel header={props.day}>
-        <div className="prep-list-wrap box">
-          <table className="customTable">
-            <tbody>
-              <tr>
-                <th>Item</th>
-                <th>Stock</th>
-                <th>Par Level</th>
-              </tr>
-              <tr>
-                <td>Bread</td>
-                <td>1</td>
-                <td>5</td>
-              </tr>
-            </tbody>
-          </table>
-          <PrepList />
-        </div>
-      </Panel>
-      <Card className="card">
-        <div className="delivery-wrap box">Deliveries</div>
-      </Card>
-      <Card className="card">
-        <div className="low-items-wrap box">Low Items</div>
-      </Card>
-    </div>
-  ) : (
-    <div>Please Login</div>
-  );
+  if (props.list) {
+    props.list.map((item) => {
+      let itemre = item.item;
+      return <div>{itemre}</div>;
+    });
+  }
+
+  let main =
+    props.user && props.list && props.items ? (
+      <div>
+        <Panel header={props.day}>
+          <div className="prep-list-wrap box">
+            {props.list.map((item) => {
+              let itm = item.item;
+              let stk = item.stock;
+              let par = item.par;
+              let prep = stk - par;
+              return (
+                <Card>
+                  <div>
+                    <div>{itm}</div>
+                    <div>Prep: {prep}</div>
+                    <div></div>
+                  </div>
+                </Card>
+              );
+            })}
+
+            <PrepList />
+          </div>
+        </Panel>
+        <Card className="card">
+          <div className="delivery-wrap box">Deliveries</div>
+        </Card>
+        <Card className="card">
+          <div className="low-items-wrap box">Low Items</div>
+        </Card>
+      </div>
+    ) : (
+      <div>Please Login</div>
+    );
 
   return <div className="main">{main}</div>;
 };

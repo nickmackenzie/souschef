@@ -1,9 +1,11 @@
-import axios from "axios";
+const BASE_URL = "/api/items/";
 
-export default class ItemService {
-  getAllItems() {
-    return fetch("/api/items/findItems")
-      .then((res) => res.json)
-      .then((data) => data);
-  }
+async function findListItems() {
+  return await fetch(BASE_URL + "getList")
+    .then((res) => res.json)
+    .then((data) => data);
 }
+
+export default {
+  findListItems,
+};

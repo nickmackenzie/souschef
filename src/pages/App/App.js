@@ -8,6 +8,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import NavBar from "../../components/NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
 import userService from "../../utilities/userService";
+import listService from "../../utilities/listService";
 import tokenService from "../../utilities/tokenService";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/nova-alt/theme.css";
@@ -72,10 +73,22 @@ class App extends Component {
         alert("err");
       });
   };
-
+  getListItems = () => {
+    axios
+      .get("api/items/getList")
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        this.setState({ list: data });
+      })
+      .catch(() => {
+        alert("err");
+      });
+  };
   async componentDidMount() {
     this.getDayOfWeek();
     this.getItems();
+    this.getListItems();
     // const rt = itemService.findItems();
     // console.log(rt);
   }
@@ -94,6 +107,7 @@ class App extends Component {
                 className="main"
                 day={this.state.day}
                 items={this.state.items}
+                list={this.state.list}
               />
             )}
           />

@@ -14,6 +14,7 @@ function makeList(req, res) {
   const list = new List({
     item: req.body.newList[1],
     stock: req.body.newList[0],
+    par: req.body.newList[2],
   });
   try {
     list.save();

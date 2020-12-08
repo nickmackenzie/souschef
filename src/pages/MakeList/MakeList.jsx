@@ -46,7 +46,7 @@ class MakeList extends Component {
     e.preventDefault();
 
     this.setState((prevState) => ({
-      newList: [e.target.value, e.target.dataset.stock],
+      newList: [e.target.value, e.target.dataset.stock, e.target.dataset.par],
     }));
   };
 
@@ -146,6 +146,7 @@ class MakeList extends Component {
                   <input
                     name="stock"
                     data-stock={name}
+                    data-par={Wednesday}
                     type="number"
                     onChange={this.valueChange}
                   ></input>
