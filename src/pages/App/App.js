@@ -13,7 +13,7 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/nova-alt/theme.css";
 import "primeicons/primeicons.css";
 import ItemInput from "../ItemInput/ItemInput";
-import MakeList from "../MakeList/MakeList.junk";
+import MakeList from "../MakeList/MakeList";
 import itemService from "../../utilities/itemService";
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
       day: null,
       tmr: null,
       items: null,
+      current: [],
     };
   }
 
@@ -129,6 +130,7 @@ class App extends Component {
                 tmr={this.state.tmr}
                 items={this.state.items}
                 history={history}
+                current={this.state.current}
               />
             )}
           />

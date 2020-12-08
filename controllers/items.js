@@ -11,8 +11,10 @@ async function addItem(req, res) {
 }
 
 function makeList(req, res) {
-  console.log("hello", req.body);
-  const list = new List(req.body);
+  const list = new List({
+    item: req.body.newList[1],
+    stock: req.body.newList[0],
+  });
 
   try {
     list.save();

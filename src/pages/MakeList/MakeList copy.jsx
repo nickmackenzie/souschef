@@ -5,26 +5,23 @@ import axios from "axios";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import "./MakeList.css";
 
 class MakeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      current: [],
-      newlist: {
-        item: [],
-      },
+      items: [""],
+      newList: [""],
+      forList: [],
     };
   }
 
-  // handleChange = (e) => {
-  //   console.log(e);
-  //   this.setState({
-  //     forList: e.target.id,
-  //   });
-  // };
+  handleChange = (e) => {
+    console.log(e);
+    this.setState({
+      forList: e.target.id,
+    });
+  };
 
   getItems = () => {
     axios
@@ -41,26 +38,14 @@ class MakeList extends Component {
   componentDidMount() {
     this.getItems();
   }
-
-  valueChange = (e) => {
-    e.preventDefault();
-
-    this.setState((prevState) => ({
-      newList: [e.target.value, e.target.dataset.stock],
-    }));
-  };
-
   addToList = (e) => {
-    e.preventDefault();
     console.log(e);
-    console.log(e.target.dataset.name);
-    this.setState((prevState) => ({
-      [e.target.dataset.name]: [...prevState.current, e.target.dataset.name],
-    }));
+    this.setState({
+      current: e.target.id,
+    });
   };
   handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       itemService.makeList(this.state);
     } catch (err) {
@@ -72,16 +57,6 @@ class MakeList extends Component {
     return (
       <Card>
         <h1>Make {this.props.tmr}'s List</h1>
-        {this.state.current.map((curr) => {
-          return (
-            <div className="newList">
-              <ol>
-                <li>{curr}</li>
-                <li></li>
-              </ol>
-            </div>
-          );
-        })}
         {this.state.items.map((item) => {
           let name = item.item;
           let Sunday = item.Sunday;
@@ -94,11 +69,14 @@ class MakeList extends Component {
           let tmr = this.props.tmr;
           if (tmr === "Sunday") {
             return (
-              <Card>
-                <form>
-                  <h1>{name}</h1>
-                </form>
-              </Card>
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td name="item">{name}</td>
+                    <td>{Sunday}</td>
+                  </tr>
+                </tbody>
+              </table>
             );
           } else if (tmr === "Monday") {
             return (
@@ -144,22 +122,19 @@ class MakeList extends Component {
               <div>
                 <form onSubmit={this.handleSubmit}>
                   <input
-                    name="stock"
-                    data-stock={name}
-                    type="number"
-                    onChange={this.valueChange}
-                  ></input>
-                  <button
-                    value={name}
-                    id={name}
-                    name={name}
                     key={name}
-                    onClick={this.handleSubmit}
-                    data-name={name}
-                    type="submit"
+                    className="item"
+                    name="item"
+                    value={name}
+                  ></input>
+                  <Button
+                    value={name}
+                    name="newList"
+                    id={name}
+                    onClick={this.addToList}
                   >
-                    {name}
-                  </button>
+                    +
+                  </Button>
                 </form>
               </div>
             );
@@ -198,10 +173,6 @@ class MakeList extends Component {
             );
           }
         })}
-
-        <div className="newList">
-          <a>{this.curr}</a>
-        </div>
       </Card>
     );
   }
