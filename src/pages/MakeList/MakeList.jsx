@@ -4,19 +4,6 @@ import itemService from "../../utilities/itemService";
 import axios from "axios";
 import { Card } from "primereact/card";
 
-// const MakeList = (items) => {
-//   let i = 0;
-
-//   return (
-//     <Card>
-// {items.items.map((item) => {
-//   console.log(item.item);
-//   <div>{item.item}</div>;
-// })}
-//     </Card>
-// //   );
-// };
-
 class MakeList extends Component {
   constructor(props) {
     super(props);
@@ -55,24 +42,96 @@ class MakeList extends Component {
           let name = item.item;
           let unit = item.unit;
           let category = item.category;
+          let Sunday = item.Sunday;
+          let Monday = item.Monday;
           let Tuesday = item.Tuesday;
+          let Wednesday = item.Wednesday;
+          let Thursday = item.Thursday;
+          let Friday = item.Friday;
+          let Saturday = item.Saturday;
+
           let tmr = this.props.tmr;
-
-          let iew = `item`;
-          let full = iew + "." + tmr;
-          console.log("cre:m", full);
-
-          console.log("tmrs date", tmr);
-          return (
-            <table className="customTable">
-              <tbody>
-                <tr>
-                  <td>{name}</td>
-                  <td>{full}</td>
-                </tr>
-              </tbody>
-            </table>
-          );
+          if (tmr === "Sunday") {
+            console.log("Hello", Tuesday);
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Sunday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          } else if (tmr === "Monday") {
+            console.log("Hello", Tuesday);
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Monday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          } else if (tmr === "Tuesday") {
+            console.log("Hello", Tuesday);
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Tuesday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          } else if (tmr === "Wednesday") {
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Wednesday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          } else if (tmr === "Thursday") {
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Thursday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          } else if (tmr === "Friday") {
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Friday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          } else if (tmr === "Saturday") {
+            return (
+              <table className="customTable">
+                <tbody>
+                  <tr>
+                    <td>{name}</td>
+                    <td>{Saturday}</td>
+                  </tr>
+                </tbody>
+              </table>
+            );
+          }
         })}
       </Card>
     );
