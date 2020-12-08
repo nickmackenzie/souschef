@@ -24,7 +24,6 @@ class ItemInput extends Component {
 
   handleChange = (e) => {
     this.setState({
-      // Using ES2015 Computed Property Names
       [e.target.name]: e.target.value,
     });
   };
@@ -57,11 +56,7 @@ class ItemInput extends Component {
         detail: "Item Added",
       });
       itemService.addItem(this.state);
-
-      // Let <App> know a user has signed up!
-      // Successfully signed up - show GamePage
     } catch (err) {
-      // Use a modal or toast in your apps instead of alert
       alert("Invalid Item");
     }
   };

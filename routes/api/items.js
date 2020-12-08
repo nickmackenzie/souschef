@@ -7,6 +7,8 @@ const user = require("../../models/user");
 
 router.post("/addItem", itemCtrl.addItem);
 
+router.post("/makeList", itemCtrl.makeList);
+
 router.get("/getItems", itemCtrl.getItems);
 
 // router.post("/addItem", async (req, res) => {

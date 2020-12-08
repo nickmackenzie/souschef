@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const listSchema = new mongoose.Schema({
   item: String,
-  stock: String,
+  stock: Number,
 });
 
 module.exports = mongoose.model("List", listSchema);

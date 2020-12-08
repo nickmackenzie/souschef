@@ -3,16 +3,21 @@ import { Link } from "react-router-dom";
 import itemService from "../../utilities/itemService";
 import axios from "axios";
 import { Card } from "primereact/card";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
 
 class MakeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [""],
+      newList: [""],
+      Steak: null,
     };
   }
 
   handleChange = (e) => {
+    console.log(e);
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -34,12 +39,21 @@ class MakeList extends Component {
     this.getItems();
   }
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      itemService.makeList(this.state);
+    } catch (err) {
+      alert("Invalid Item");
+    }
+  };
+
   render() {
     return (
       <Card>
         <h1>Make {this.props.tmr}'s List</h1>
         {this.state.items.map((item) => {
-          let name = item.item;
+          let name = "list" + item.item;
           let Sunday = item.Sunday;
           let Monday = item.Monday;
           let Tuesday = item.Tuesday;
@@ -47,14 +61,13 @@ class MakeList extends Component {
           let Thursday = item.Thursday;
           let Friday = item.Friday;
           let Saturday = item.Saturday;
-
           let tmr = this.props.tmr;
           if (tmr === "Sunday") {
             return (
               <table className="customTable">
                 <tbody>
                   <tr>
-                    <td>{name}</td>
+                    <td name="item">{name}</td>
                     <td>{Sunday}</td>
                   </tr>
                 </tbody>
@@ -73,25 +86,52 @@ class MakeList extends Component {
             );
           } else if (tmr === "Tuesday") {
             return (
-              <table className="customTable">
-                <tbody>
-                  <tr>
-                    <td>{name}</td>
-                    <td>{Tuesday}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <form onSubmit={this.handleSubmit}>
+                <table className="customTable">
+                  <tbody>
+                    <tr>
+                      <InputText
+                        placeholder={name}
+                        value={name}
+                        defaultValue={name}
+                        type="text"
+                        name={name}
+                      ></InputText>
+
+                      <input
+                        placeholder="0"
+                        onChange={this.handleChange}
+                        type="number"
+                        name={name}
+                      ></input>
+                      <Button>Make List</Button>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
             );
           } else if (tmr === "Wednesday") {
             return (
-              <table className="customTable">
-                <tbody>
-                  <tr>
-                    <td>{name}</td>
-                    <td>{Wednesday}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <form onSubmit={this.handleSubmit}>
+                <table className="customTable">
+                  <tbody>
+                    <tr>
+                      <h1 name="item" value={name}>
+                        {name}
+                      </h1>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <InputText
+                  placeholder="0"
+                  onChange={this.handleChange}
+                  type="number"
+                  name="stock"
+                  className={name}
+                ></InputText>
+                <Button>Make List</Button>
+              </form>
             );
           } else if (tmr === "Thursday") {
             return (

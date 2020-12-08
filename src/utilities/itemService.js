@@ -13,6 +13,19 @@ function addItem(item) {
     .then((data) => data);
 }
 
+function makeList(list) {
+  return fetch(BASE_URL + "makeList", {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify(list),
+  })
+    .then((res) => {
+      if (res.ok) return res.json();
+      throw new Error("Error While Making List.");
+    })
+    .then((data) => data);
+}
+
 async function findItems() {
   return await fetch(BASE_URL + "findItems")
     .then((res) => res.json)
@@ -22,4 +35,5 @@ async function findItems() {
 export default {
   addItem,
   findItems,
+  makeList,
 };
