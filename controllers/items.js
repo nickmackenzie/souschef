@@ -10,12 +10,12 @@ async function addItem(req, res) {
   }
 }
 
-async function makeList(req, res) {
+function makeList(req, res) {
   console.log("hello", req.body);
   const list = new List(req.body);
 
   try {
-    await list.save();
+    list.save();
   } catch (err) {
     res.status(400).json(err);
   }

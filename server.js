@@ -11,6 +11,7 @@ require("./config/database");
 
 const userRoute = require("./routes/api/users");
 const itemRoute = require("./routes/api/items");
+const listRoute = require("./routes/api/list");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.use("/api/users", userRoute);
 app.use("/api/items", itemRoute);
+app.use("/api/list", listRoute);
 
 // app.use(require('./config/auth'));
 

@@ -13,7 +13,7 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/nova-alt/theme.css";
 import "primeicons/primeicons.css";
 import ItemInput from "../ItemInput/ItemInput";
-import MakeList from "../MakeList/MakeList";
+import MakeList from "../MakeList/MakeList.og";
 import itemService from "../../utilities/itemService";
 
 class App extends Component {
