@@ -40,8 +40,6 @@ class MakeList extends Component {
         <h1>Make {this.props.tmr}'s List</h1>
         {this.state.items.map((item) => {
           let name = item.item;
-          let unit = item.unit;
-          let category = item.category;
           let Sunday = item.Sunday;
           let Monday = item.Monday;
           let Tuesday = item.Tuesday;
@@ -52,7 +50,6 @@ class MakeList extends Component {
 
           let tmr = this.props.tmr;
           if (tmr === "Sunday") {
-            console.log("Hello", Tuesday);
             return (
               <table className="customTable">
                 <tbody>
@@ -64,7 +61,6 @@ class MakeList extends Component {
               </table>
             );
           } else if (tmr === "Monday") {
-            console.log("Hello", Tuesday);
             return (
               <table className="customTable">
                 <tbody>
@@ -76,7 +72,6 @@ class MakeList extends Component {
               </table>
             );
           } else if (tmr === "Tuesday") {
-            console.log("Hello", Tuesday);
             return (
               <table className="customTable">
                 <tbody>
