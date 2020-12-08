@@ -55,7 +55,6 @@ class App extends Component {
 
     var today = weekday[day];
     var tmr = weekday[dayPlusOne];
-    console.log("hankey", tmr);
     this.setState({ day: today });
     this.setState({ tmr: tmr });
   };

@@ -55,16 +55,20 @@ class MakeList extends Component {
           let name = item.item;
           let unit = item.unit;
           let category = item.category;
-          let tmrDay = this.props.tmr;
-          let itemDay = item;
-          console.log("fh", itemDay.tmrDay);
+          let Tuesday = item.Tuesday;
+          let tmr = this.props.tmr;
 
+          let iew = `item`;
+          let full = iew + "." + tmr;
+          console.log("cre:m", full);
+
+          console.log("tmrs date", tmr);
           return (
             <table className="customTable">
               <tbody>
                 <tr>
                   <td>{name}</td>
-                  <td>{tmrDay}</td>
+                  <td>{full}</td>
                 </tr>
               </tbody>
             </table>
