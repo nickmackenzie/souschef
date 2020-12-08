@@ -15,7 +15,6 @@ function makeList(req, res) {
     item: req.body.newList[1],
     stock: req.body.newList[0],
   });
-
   try {
     list.save();
   } catch (err) {
