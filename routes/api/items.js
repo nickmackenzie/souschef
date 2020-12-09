@@ -14,7 +14,7 @@ router.get("/getItems", itemCtrl.getItems);
 
 router.get("/getList", listCtrl.getDayList);
 
-router.get("/delListItem", listCtrl.delList);
+router.delete("/delListItem/:id", listCtrl.delList);
 
 // router.post("/addItem", async (req, res) => {
 //   const item = new Item(req.body);

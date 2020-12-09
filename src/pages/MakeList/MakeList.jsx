@@ -156,7 +156,7 @@ class MakeList extends Component {
             );
           } else if (tmr === "Wednesday") {
             return (
-              <div>
+              <div className="list-wrap-div">
                 <form onSubmit={this.handleSubmit}>
                   <input
                     name="stock"
@@ -167,17 +167,17 @@ class MakeList extends Component {
                     min="0"
                     onChange={this.valueChange}
                   ></input>
-                  <button
+                  <Button
                     value={name}
                     id={name}
                     name={name}
-                    key={name}
                     onClick={this.handleSubmit}
                     data-name={name}
                     type="submit"
+                    className="btn"
                   >
                     {name}
-                  </button>
+                  </Button>
                 </form>
               </div>
             );

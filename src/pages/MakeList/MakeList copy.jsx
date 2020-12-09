@@ -121,12 +121,7 @@ class MakeList extends Component {
             return (
               <div>
                 <form onSubmit={this.handleSubmit}>
-                  <input
-                    key={name}
-                    className="item"
-                    name="item"
-                    value={name}
-                  ></input>
+                  <input className="item" name="item" value={name}></input>
                   <Button
                     value={name}
                     name="newList"

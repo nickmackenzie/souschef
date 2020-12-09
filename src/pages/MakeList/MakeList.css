@@ -1,3 +1,10 @@
 .newList {
   border: 2px black solid;
 }
+.list-wrap-div {
+  width: 200px;
+  text-align: center;
+}
+.p-button p-component btn {
+  text-align: center;
+}

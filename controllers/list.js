@@ -6,9 +6,9 @@ async function getDayList(req, res) {
   res.json(list);
 }
 
-async function del(req, res) {
-  const list = await List.find({});
-  console.log("hey:,", list);
+async function delList(req, res) {
+  console.log("req", req.params);
+  const list = await List.findOneAndDelete({ _id: req.params.id });
   res.json(list);
 }
 

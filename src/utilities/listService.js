@@ -6,10 +6,18 @@ async function findListItems() {
     .then((data) => data);
 }
 
-async function delFromList() {
+async function delFromList(e) {
+  console.log(e);
   return await fetch(BASE_URL + "delListItem")
     .then((res) => res.jsnon)
     .then((data) => data);
+}
+
+export async function deleteItem(id) {
+  const response = await fetch(BASE_URL + `/delListItem/${id}`, {
+    method: "DELETE",
+  });
+  return response.json();
 }
 export default {
   findListItems,

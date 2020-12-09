@@ -27,7 +27,7 @@ function addItem(item, stock) {
     .then((data) => data);
 }
 
-async function findItems() {
+export async function findItems(list) {
   return await fetch(BASE_URL + "findItems")
     .then((res) => res.json)
     .then((data) => data);

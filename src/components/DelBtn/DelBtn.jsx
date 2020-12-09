@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import itemService from "../../utilities/itemService";
+import { deleteItem } from "../../utilities/listService";
 
 import { Card } from "primereact/card";
 
@@ -8,29 +9,26 @@ class DelBtn extends Component {
     id: null,
   };
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    let tarId = e.target[0].dataset.id;
-    try {
-      //   itemService.makeList(this.state);
-    } catch (err) {
-      alert("Invalid Item");
-    }
+  deleteData = async (id) => {
+    console.log(id.target.dataset.id);
+    let itmId = id.target.dataset.id;
+    await deleteItem(itmId);
   };
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {" "}
-        <input data-id={this.props.id}></input>
+      <div>
+        <div>
+          <input data-id={this.props.id}></input>
+        </div>
         <button
           data-id={this.props.id}
           value={this.props.id}
           id={this.props.id}
+          onClick={this.deleteData}
         >
           {this.props.id}
         </button>
-      </form>
+      </div>
     );
   }
 }
