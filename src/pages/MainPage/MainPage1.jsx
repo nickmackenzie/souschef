@@ -6,7 +6,6 @@ import { Card } from "primereact/card";
 import DelBtn from "../../components/DelBtn/DelBtn";
 
 const MainPage = (props) => {
-  console.log("hello", props.list);
   if (props.list) {
     props.list.map((item) => {
       let itemre = item.item;
@@ -21,7 +20,6 @@ const MainPage = (props) => {
           <div className="prep-list-wrap box">
             {props.list.map((item, idx) => {
               let inde = idx;
-              console.log("index", inde);
               let itm = item.item;
               let stk = item.stock;
               let par = item.par;

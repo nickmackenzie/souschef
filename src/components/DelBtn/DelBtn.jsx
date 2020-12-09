@@ -26,20 +26,16 @@ class DelBtn extends Component {
     let array = [...this.state.list];
     let idc = this.state.index;
     array.splice(idc, 1);
-    console.log("new", array);
     this.setState({ list: array }, () => {
       console.log("dealersOverallTotal1");
     });
-    console.log(id.target.dataset.id);
     let itmId = id.target.dataset.id;
-    console.log(this.state);
     await deleteItem(itmId);
   };
   render() {
     return (
       <div>
         <div>
-          {console.log("ok", this.props.list[0])}
           <input data-id={this.props.id}></input>
         </div>
         <Button

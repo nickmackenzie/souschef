@@ -12,14 +12,14 @@ class MainPage extends Component {
   constructor() {
     super();
     this.state = {
-      list: null,
+      list: this.getListItems(),
     };
-    this.mapList = this.mapList.bind(this);
   }
 
   deleteData = async (id) => {
+    console.log("id", id.target.dataset.index);
     let array = [...this.state.list];
-    let idc = this.state.index;
+    let idc = id.target.dataset.index;
     array.splice(idc, 1);
     console.log("new", array);
     this.setState({ list: array }, () => {
@@ -36,44 +36,72 @@ class MainPage extends Component {
       .get("api/items/getList")
       .then((response) => {
         const data = response.data;
-        console.log("data", data);
+        this.setState({ list: data });
       })
       .catch(() => {
         alert("err");
       });
   };
 
-  mapList = () => {
-    console.log(this.state);
-    if (this.props.list) {
-      console.log(this.props.list);
-      this.props.list.map((item, idx) => {
-        let inde = idx;
-        let itm = item.item;
-        let stk = item.stock;
-        let par = item.par;
-        let prep = stk - par;
-        let id = item._id;
-        console.log(id);
-        return inde, itm, stk, par, prep, id;
-      });
+  renderList() {
+    let x = this.renderList.bind(this);
+    console.log("prp", this.state.list);
+    let stateList = this.state.list;
+    if (stateList != null) {
+      return (
+        <div>
+          {stateList.map((item, idx) => {
+            let inde = idx;
+            let itm = item.item;
+            let stk = item.stock;
+            let par = item.par;
+            let prep = stk - par;
+            let id = item._id;
+            return (
+              <div>
+                {itm}
+                <button
+                  data-id={id}
+                  data-index={inde}
+                  value={id}
+                  id={id}
+                  onClick={this.deleteData.bind(this)}
+                >
+                  X
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      );
     }
-  };
+    return <div>Please Wait..</div>;
+  }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.getListItems();
-    this.mapList();
+    await this.renderList();
   }
 
   render() {
     return (
-      <Card className="LoginPage">
-        <Fieldset legend="Header">
-          <p>{this.inde}</p>
-        </Fieldset>
-      </Card>
+      <div>
+        <Card className="LoginPage">
+          <Fieldset legend="Header">
+            {" "}
+            <div>{this.renderList()}</div>
+          </Fieldset>
+        </Card>
+      </div>
     );
   }
 }
 
 export default MainPage;
+
+// let inde = idx;
+// let itm = item.item;
+// let stk = item.stock;
+// let par = item.par;
+// let prep = stk - par;
+// let id = item._id;

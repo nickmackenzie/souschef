@@ -27,6 +27,7 @@ class App extends Component {
       items: null,
       current: [],
     };
+    this.addToList = this.addToList.bind(this);
   }
 
   // Handlers
@@ -37,6 +38,12 @@ class App extends Component {
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
+  };
+
+  addToList = (value) => {
+    this.setState((prevArray) => ({
+      list: [value],
+    }));
   };
 
   getDayOfWeek = () => {
@@ -73,22 +80,10 @@ class App extends Component {
         alert("err");
       });
   };
-  getListItems = () => {
-    axios
-      .get("api/items/getList")
-      .then((response) => {
-        const data = response.data;
-        console.log(data);
-        this.setState({ list: data });
-      })
-      .catch(() => {
-        alert("err");
-      });
-  };
+
   async componentDidMount() {
     this.getDayOfWeek();
     this.getItems();
-    this.getListItems();
   }
 
   render() {
@@ -106,6 +101,7 @@ class App extends Component {
                 day={this.state.day}
                 items={this.state.items}
                 list={this.state.list}
+                addToList={this.addToList}
               />
             )}
           />
@@ -143,6 +139,7 @@ class App extends Component {
                 items={this.state.items}
                 history={history}
                 current={this.state.current}
+                addToList={this.addToList.bind(this)}
               />
             )}
           />

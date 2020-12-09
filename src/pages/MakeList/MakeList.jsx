@@ -19,13 +19,6 @@ class MakeList extends Component {
     };
   }
 
-  // handleChange = (e) => {
-  //   console.log(e);
-  //   this.setState({
-  //     forList: e.target.id,
-  //   });
-  // };
-
   getItems = () => {
     axios
       .get("api/items/getItems")
@@ -52,9 +45,6 @@ class MakeList extends Component {
   };
 
   addToList = (e) => {
-    e.preventDefault();
-    console.log(e);
-    console.log(e.target.dataset.name);
     this.setState((prevState) => ({
       [e.target.dataset.name]: [...prevState.current, e.target.dataset.name],
     }));
@@ -65,7 +55,6 @@ class MakeList extends Component {
       .get("api/items/getList")
       .then((response) => {
         const data = response.data;
-        console.log("len", data.length);
         this.setState({ list: data });
       })
       .catch(() => {
@@ -195,10 +184,20 @@ class MakeList extends Component {
                     onChange={this.valueChange}
                   ></input>
                   <Button
+                    data-stock={name}
+                    data-par={Thursday}
                     value={name}
                     id={name}
                     name={name}
-                    onClick={this.handleSubmit}
+                    data-name={name}
+                    className="btn"
+                    onClick={(e) =>
+                      this.props.addToList([
+                        e.target.value,
+                        e.target.dataset.stock,
+                        e.target.dataset.par,
+                      ])
+                    }
                     data-name={name}
                     type="submit"
                     className="btn"

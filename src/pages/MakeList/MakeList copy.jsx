@@ -17,7 +17,6 @@ class MakeList extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e);
     this.setState({
       forList: e.target.id,
     });
@@ -39,7 +38,6 @@ class MakeList extends Component {
     this.getItems();
   }
   addToList = (e) => {
-    console.log(e);
     this.setState({
       current: e.target.id,
     });
