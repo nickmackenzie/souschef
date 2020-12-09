@@ -21,3 +21,8 @@ table.customTable th {
   border-style: solid;
   padding: 5px;
 }
+
+.list-item {
+  display: flex;
+  justify-content: space-around;
+}

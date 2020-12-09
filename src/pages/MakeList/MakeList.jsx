@@ -5,6 +5,7 @@ import axios from "axios";
 import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { Toast } from "primereact/toast";
 import "./MakeList.css";
 
 class MakeList extends Component {
@@ -31,9 +32,9 @@ class MakeList extends Component {
       });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.getItems();
-    this.getListItems();
+    await this.getListItems();
   }
 
   valueChange = (e) => {
@@ -66,6 +67,11 @@ class MakeList extends Component {
     e.preventDefault();
 
     try {
+      this.toast.show({
+        severity: "success",
+        summary: "",
+        detail: "Item Added To List",
+      });
       itemService.makeList(this.state);
     } catch (err) {
       alert("Invalid Item");
@@ -76,6 +82,7 @@ class MakeList extends Component {
     return (
       <Card>
         <h1>Make {this.props.tmr}'s List</h1>
+        <Toast ref={(el) => (this.toast = el)} />
         {this.state.current.map((curr) => {
           return (
             <div className="newList">
@@ -186,6 +193,7 @@ class MakeList extends Component {
                   <Button
                     data-stock={name}
                     data-par={Thursday}
+                    data-name={name}
                     value={name}
                     id={name}
                     name={name}
