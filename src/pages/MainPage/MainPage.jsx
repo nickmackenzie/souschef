@@ -3,6 +3,7 @@ import "./MainPage.css";
 import PrepList from "../../components/PrepList/PrepList";
 import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
+import DelBtn from "../../components/DelBtn/DelBtn";
 
 const MainPage = (props) => {
   if (props.list) {
@@ -21,13 +22,16 @@ const MainPage = (props) => {
               let itm = item.item;
               let stk = item.stock;
               let par = item.par;
-              let prep = par - stk;
+              let prep = stk - par;
+              let id = item._id;
               return (
                 <Card>
                   <div>
                     <div>{itm}</div>
                     <div>Prep: {prep}</div>
-                    <div></div>
+                    <div>
+                      <DelBtn id={id}></DelBtn>
+                    </div>
                   </div>
                 </Card>
               );

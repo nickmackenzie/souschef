@@ -6,6 +6,12 @@ async function findListItems() {
     .then((data) => data);
 }
 
+async function delFromList() {
+  return await fetch(BASE_URL + "delListItem")
+    .then((res) => res.jsnon)
+    .then((data) => data);
+}
 export default {
   findListItems,
+  delFromList,
 };

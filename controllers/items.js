@@ -25,7 +25,6 @@ function makeList(req, res) {
 
 async function getItems(req, res) {
   const items = await Item.find({});
-  console.log(items);
   res.json(items);
 }
 

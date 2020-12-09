@@ -66,7 +66,7 @@ class App extends Component {
       .get("api/items/getItems")
       .then((response) => {
         const data = response.data;
-        console.log(data);
+
         this.setState({ items: data });
       })
       .catch(() => {
@@ -78,7 +78,7 @@ class App extends Component {
       .get("api/items/getList")
       .then((response) => {
         const data = response.data;
-        console.log(data);
+
         this.setState({ list: data });
       })
       .catch(() => {
@@ -88,9 +88,6 @@ class App extends Component {
   async componentDidMount() {
     this.getDayOfWeek();
     this.getItems();
-    this.getListItems();
-    // const rt = itemService.findItems();
-    // console.log(rt);
   }
 
   render() {
