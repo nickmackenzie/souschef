@@ -89,7 +89,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+        <NavBar
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+          className="nav-bar"
+        />
         <Switch>
           <Route
             exact

@@ -1,4 +1,6 @@
 .navWrap {
+  padding-top: 10px;
+  padding-bottom: 100px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,13 +14,23 @@
 }
 
 .logo {
-  font-size: 2rem;
-  color: black;
+  font-size: 2.2rem;
+  color: white;
   font-weight: 700;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .NavBar-link {
   text-decoration: none;
-  color: black;
+  color: white;
+  text-transform: uppercase;
   font-weight: 500;
+  padding: 1rem;
+  border: 2px rgb(236, 236, 236) solid;
+  border-radius: 8px;
+  background-color: #2050ff;
+  font-weight: 500;
+  letter-spacing: 1px;
 }

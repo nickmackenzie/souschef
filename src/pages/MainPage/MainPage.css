@@ -8,6 +8,7 @@
 .item-wrap {
   flex: 0 1 150px; /*  No stretching: */
   margin: 5px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.623);
 }
 .p-card-content {
   display: flex;
@@ -31,7 +32,7 @@ li {
   list-style: none;
 }
 
-.todo-box {
+.LoginPage {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -39,4 +40,20 @@ li {
 
 .prep-color {
   color: red;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.child-card {
+  flex: 0 1 250px; /*  No stretching: */
+  margin: 5px;
 }

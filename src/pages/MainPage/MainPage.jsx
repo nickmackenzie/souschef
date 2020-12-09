@@ -49,7 +49,7 @@ class MainPage extends Component {
     let stateList = this.state.list;
     if (stateList != null) {
       return (
-        <div>
+        <div className="parent">
           {stateList.map((item, idx) => {
             let inde = idx;
             console.log(item);
@@ -60,9 +60,9 @@ class MainPage extends Component {
             let id = item._id;
             let unit = item.unit;
             return (
-              <div className="item-wrap">
-                <div>
-                  <Card>
+              <Card className="child-card">
+                <div className="item-wrap">
+                  <div>
                     <ul>
                       <li>
                         {" "}
@@ -70,21 +70,19 @@ class MainPage extends Component {
                         {unit}
                       </li>
                     </ul>
-                    <button
-                      data-id={id}
-                      data-index={inde}
-                      value={id}
-                      id={id}
-                      onClick={this.deleteData.bind(this)}
-                      className="delete-button"
-                    >
-                      <i class="fas fa-check"></i>
-                    </button>
-                  </Card>
+                  </div>
+                  <button
+                    data-id={id}
+                    data-index={inde}
+                    value={id}
+                    id={id}
+                    onClick={this.deleteData.bind(this)}
+                    className="delete-button"
+                  >
+                    <i class="fas fa-check"></i>
+                  </button>
                 </div>
-
-                <div></div>
-              </div>
+              </Card>
             );
           })}
         </div>
@@ -102,10 +100,7 @@ class MainPage extends Component {
     return (
       <div>
         <Card className="LoginPage">
-          <Fieldset legend="Prep List">
-            {" "}
-            <div>{this.renderList()}</div>
-          </Fieldset>
+          <div className="box">{this.renderList()}</div>
         </Card>
       </div>
     );

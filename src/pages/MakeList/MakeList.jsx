@@ -87,9 +87,8 @@ class MakeList extends Component {
   render() {
     return (
       <div className="p-grid">
-        <h1>Make {this.props.tmr}'s List</h1>
-
         <Card className="make-wrap">
+          <h1>Make {this.props.tmr}'s List</h1>
           <Toast ref={(el) => (this.toast = el)} />
           {this.state.current.map((curr) => {
             return (

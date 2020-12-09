@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+}
+.wave-container {
+  position: relative;
+  background: #09f;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+}
+.wave-container > svg {
+  display: block;
+}

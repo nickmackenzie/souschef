@@ -6,7 +6,6 @@ import ItemInput from "../../pages/ItemInput/ItemInput";
 const NavBar = (props) => {
   let nav = props.user ? (
     <nav className="navWrap">
-      <div className="logo">SousChef</div>
       <div className="links">
         <Link className="NavBar-link" to="/">
           Home
