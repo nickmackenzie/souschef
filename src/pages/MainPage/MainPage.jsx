@@ -21,7 +21,7 @@ const MainPage = (props) => {
               let itm = item.item;
               let stk = item.stock;
               let par = item.par;
-              let prep = stk - par;
+              let prep = par - stk;
               return (
                 <Card>
                   <div>

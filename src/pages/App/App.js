@@ -108,6 +108,7 @@ class App extends Component {
                 day={this.state.day}
                 items={this.state.items}
                 list={this.state.list}
+                onClick={this.getListItems()}
               />
             )}
           />

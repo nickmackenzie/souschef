@@ -40,6 +40,7 @@ class MakeList extends Component {
 
   componentDidMount() {
     this.getItems();
+    this.getListItems();
   }
 
   valueChange = (e) => {
@@ -58,6 +59,20 @@ class MakeList extends Component {
       [e.target.dataset.name]: [...prevState.current, e.target.dataset.name],
     }));
   };
+
+  getListItems = () => {
+    axios
+      .get("api/items/getList")
+      .then((response) => {
+        const data = response.data;
+        console.log("len", data.length);
+        this.setState({ list: data });
+      })
+      .catch(() => {
+        alert("err");
+      });
+  };
+
   handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -148,6 +163,8 @@ class MakeList extends Component {
                     data-stock={name}
                     data-par={Wednesday}
                     type="number"
+                    max={Wednesday}
+                    min="0"
                     onChange={this.valueChange}
                   ></input>
                   <button
