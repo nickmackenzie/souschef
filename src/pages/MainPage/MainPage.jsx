@@ -4,57 +4,76 @@ import PrepList from "../../components/PrepList/PrepList";
 import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
 import DelBtn from "../../components/DelBtn/DelBtn";
+import { Fieldset } from "primereact/fieldset";
+import axios from "axios";
+import { deleteItem } from "../../utilities/listService";
 
-const MainPage = (props) => {
-  console.log("hello", props.list);
-  if (props.list) {
-    props.list.map((item) => {
-      let itemre = item.item;
-      return <div>{itemre}</div>;
-    });
+class MainPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      list: null,
+    };
+    this.mapList = this.mapList.bind(this);
   }
 
-  let main =
-    props.user && props.list && props.items ? (
-      <div>
-        <Panel header={props.day}>
-          <div className="prep-list-wrap box">
-            {props.list.map((item, idx) => {
-              let inde = idx;
-              console.log("index", inde);
-              let itm = item.item;
-              let stk = item.stock;
-              let par = item.par;
-              let prep = stk - par;
-              let id = item._id;
-              return (
-                <Card>
-                  <div>
-                    <div>{itm}</div>
-                    <div>Prep: {prep}</div>
-                    <div>
-                      <DelBtn list={props.list} index={inde} id={id}></DelBtn>
-                    </div>
-                  </div>
-                </Card>
-              );
-            })}
+  deleteData = async (id) => {
+    let array = [...this.state.list];
+    let idc = this.state.index;
+    array.splice(idc, 1);
+    console.log("new", array);
+    this.setState({ list: array }, () => {
+      console.log("dealersOverallTotal1");
+    });
+    console.log(id.target.dataset.id);
+    let itmId = id.target.dataset.id;
+    console.log(this.state);
+    await deleteItem(itmId);
+  };
 
-            <PrepList />
-          </div>
-        </Panel>
-        <Card className="card">
-          <div className="delivery-wrap box">Deliveries</div>
-        </Card>
-        <Card className="card">
-          <div className="low-items-wrap box">Low Items</div>
-        </Card>
-      </div>
-    ) : (
-      <div>Please Login</div>
+  getListItems = () => {
+    axios
+      .get("api/items/getList")
+      .then((response) => {
+        const data = response.data;
+        console.log("data", data);
+      })
+      .catch(() => {
+        alert("err");
+      });
+  };
+
+  mapList = () => {
+    console.log(this.state);
+    if (this.props.list) {
+      console.log(this.props.list);
+      this.props.list.map((item, idx) => {
+        let inde = idx;
+        let itm = item.item;
+        let stk = item.stock;
+        let par = item.par;
+        let prep = stk - par;
+        let id = item._id;
+        console.log(id);
+        return inde, itm, stk, par, prep, id;
+      });
+    }
+  };
+
+  componentDidMount() {
+    this.getListItems();
+    this.mapList();
+  }
+
+  render() {
+    return (
+      <Card className="LoginPage">
+        <Fieldset legend="Header">
+          <p>{this.inde}</p>
+        </Fieldset>
+      </Card>
     );
-
-  return <div className="main">{main}</div>;
-};
+  }
+}
 
 export default MainPage;
