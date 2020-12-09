@@ -22,7 +22,15 @@ table.customTable th {
   padding: 5px;
 }
 
-.list-item {
+.item-wrap {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+.delete-button {
+  padding: 10px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
 }

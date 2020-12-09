@@ -55,17 +55,22 @@ class MainPage extends Component {
             let itm = item.item;
             let stk = item.stock;
             let par = item.par;
-            let prep = stk - par;
+            let prep = par - stk;
             let id = item._id;
             return (
-              <div>
-                {itm}
+              <div className="item-wrap">
+                <div>
+                  Prepare: {prep} {itm}
+                </div>
+                <div></div>
+
                 <button
                   data-id={id}
                   data-index={inde}
                   value={id}
                   id={id}
                   onClick={this.deleteData.bind(this)}
+                  className="delete-button"
                 >
                   X
                 </button>
