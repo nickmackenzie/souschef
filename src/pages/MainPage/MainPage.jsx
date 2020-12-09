@@ -52,28 +52,38 @@ class MainPage extends Component {
         <div>
           {stateList.map((item, idx) => {
             let inde = idx;
+            console.log(item);
             let itm = item.item;
             let stk = item.stock;
             let par = item.par;
             let prep = par - stk;
             let id = item._id;
+            let unit = item.unit;
             return (
               <div className="item-wrap">
                 <div>
-                  Prepare: {prep} {itm}
+                  <Card>
+                    <ul>
+                      <li>
+                        {" "}
+                        {itm} Prep: <span className="prep-color">{prep}</span>{" "}
+                        {unit}
+                      </li>
+                    </ul>
+                    <button
+                      data-id={id}
+                      data-index={inde}
+                      value={id}
+                      id={id}
+                      onClick={this.deleteData.bind(this)}
+                      className="delete-button"
+                    >
+                      <i class="fas fa-check"></i>
+                    </button>
+                  </Card>
                 </div>
-                <div></div>
 
-                <button
-                  data-id={id}
-                  data-index={inde}
-                  value={id}
-                  id={id}
-                  onClick={this.deleteData.bind(this)}
-                  className="delete-button"
-                >
-                  X
-                </button>
+                <div></div>
               </div>
             );
           })}
@@ -92,7 +102,7 @@ class MainPage extends Component {
     return (
       <div>
         <Card className="LoginPage">
-          <Fieldset legend="Header">
+          <Fieldset legend="Prep List">
             {" "}
             <div>{this.renderList()}</div>
           </Fieldset>

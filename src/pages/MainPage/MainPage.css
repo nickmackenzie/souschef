@@ -1,36 +1,42 @@
 .card {
-  min-width: 200px;
-  margin: 20px;
-}
-
-table.customTable {
-  width: 100%;
-  background-color: #ffffff;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #333333;
-  border-style: solid;
-  color: #333333;
-  border-radius: 5px;
-}
-
-table.customTable td,
-table.customTable th {
-  border-width: 2px;
-  border-color: #333333;
-  border-style: solid;
-  padding: 5px;
+  min-width: 300px;
+  min-height: 50px;
+  max-height: 120px;
+  padding: 2px;
 }
 
 .item-wrap {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex: 0 1 150px; /*  No stretching: */
+  margin: 5px;
 }
-
+.p-card-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 .delete-button {
   padding: 10px;
   border: none;
   margin: 10px;
   cursor: pointer;
+  background-color: #099268;
+  border-radius: 5px;
+}
+ul {
+  display: flex;
+  justify-content: center;
+}
+li {
+  font-size: 1.4rem;
+  list-style: none;
+}
+
+.todo-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.prep-color {
+  color: red;
 }

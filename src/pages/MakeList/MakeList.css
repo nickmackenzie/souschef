@@ -2,9 +2,22 @@
   border: 2px black solid;
 }
 .list-wrap-div {
-  width: 200px;
+  display: flex;
+
   text-align: center;
 }
 .p-button p-component btn {
   text-align: center;
+}
+
+.make-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.p-card-content {
+  display: flex;
+
+  max-width: 300px;
 }

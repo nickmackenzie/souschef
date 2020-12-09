@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "primeflex/primeflex.css";
 import { Link } from "react-router-dom";
 import itemService from "../../utilities/itemService";
 import axios from "axios";
@@ -6,6 +7,7 @@ import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+
 import "./MakeList.css";
 
 class MakeList extends Component {
@@ -39,9 +41,13 @@ class MakeList extends Component {
 
   valueChange = (e) => {
     e.preventDefault();
-
     this.setState((prevState) => ({
-      newList: [e.target.value, e.target.dataset.stock, e.target.dataset.par],
+      newList: [
+        e.target.value,
+        e.target.dataset.stock,
+        e.target.dataset.par,
+        e.target.dataset.unit,
+      ],
     }));
   };
 
@@ -80,170 +86,182 @@ class MakeList extends Component {
 
   render() {
     return (
-      <Card>
+      <div className="p-grid">
         <h1>Make {this.props.tmr}'s List</h1>
-        <Toast ref={(el) => (this.toast = el)} />
-        {this.state.current.map((curr) => {
-          return (
-            <div className="newList">
-              <ol>
-                <li>{curr}</li>
-                <li></li>
-              </ol>
-            </div>
-          );
-        })}
-        {this.state.items.map((item) => {
-          let name = item.item;
-          let Sunday = item.Sunday;
-          let Monday = item.Monday;
-          let Tuesday = item.Tuesday;
-          let Wednesday = item.Wednesday;
-          let Thursday = item.Thursday;
-          let Friday = item.Friday;
-          let Saturday = item.Saturday;
-          let tmr = this.props.tmr;
-          if (tmr === "Sunday") {
+
+        <Card className="make-wrap">
+          <Toast ref={(el) => (this.toast = el)} />
+          {this.state.current.map((curr) => {
             return (
-              <Card>
-                <form>
-                  <h1>{name}</h1>
-                </form>
-              </Card>
+              <div>
+                <ol>
+                  <li>{curr}</li>
+                  <li></li>
+                </ol>
+              </div>
             );
-          } else if (tmr === "Monday") {
-            return (
-              <table className="customTable">
-                <tbody>
-                  <tr>
-                    <td>{name}</td>
-                    <td>{Monday}</td>
-                  </tr>
-                </tbody>
-              </table>
-            );
-          } else if (tmr === "Tuesday") {
-            return (
-              <form onSubmit={this.handleSubmit}>
+          })}
+          {this.state.items.map((item) => {
+            let name = item.item;
+            let Sunday = item.Sunday;
+            let Monday = item.Monday;
+            let Tuesday = item.Tuesday;
+            let Wednesday = item.Wednesday;
+            let Thursday = item.Thursday;
+            let Friday = item.Friday;
+            let Saturday = item.Saturday;
+            let unit = item.unit;
+            let tmr = this.props.tmr;
+            if (tmr === "Sunday") {
+              return (
+                <Card>
+                  <form>
+                    <h1>{name}</h1>
+                  </form>
+                </Card>
+              );
+            } else if (tmr === "Monday") {
+              return (
                 <table className="customTable">
                   <tbody>
                     <tr>
-                      <span>
-                        <InputText
-                          placeholder={name}
-                          value={name}
-                          defaultValue={name}
-                          type="text"
-                          name={name}
-                        ></InputText>
-
-                        <input
-                          placeholder="0"
-                          onChange={this.handleChange}
-                          type="number"
-                          name={name}
-                        ></input>
-                        <Button>Make List</Button>
-                      </span>
+                      <td>{name}</td>
+                      <td>{Monday}</td>
                     </tr>
                   </tbody>
                 </table>
-              </form>
-            );
-          } else if (tmr === "Wednesday") {
-            return (
-              <div className="list-wrap-div">
+              );
+            } else if (tmr === "Tuesday") {
+              return (
                 <form onSubmit={this.handleSubmit}>
-                  <input
-                    name="stock"
-                    data-stock={name}
-                    data-par={Wednesday}
-                    type="number"
-                    max={Wednesday}
-                    min="0"
-                    onChange={this.valueChange}
-                  ></input>
-                  <Button
-                    value={name}
-                    id={name}
-                    name={name}
-                    onClick={this.handleSubmit}
-                    data-name={name}
-                    type="submit"
-                    className="btn"
-                  >
-                    {name}
-                  </Button>
-                </form>
-              </div>
-            );
-          } else if (tmr === "Thursday") {
-            return (
-              <div className="list-wrap-div">
-                <form onSubmit={this.handleSubmit}>
-                  <input
-                    name="stock"
-                    data-stock={name}
-                    data-par={Thursday}
-                    type="number"
-                    max={Thursday}
-                    min="0"
-                    onChange={this.valueChange}
-                  ></input>
-                  <Button
-                    data-stock={name}
-                    data-par={Thursday}
-                    data-name={name}
-                    value={name}
-                    id={name}
-                    name={name}
-                    data-name={name}
-                    className="btn"
-                    onClick={(e) =>
-                      this.props.addToList([
-                        e.target.value,
-                        e.target.dataset.stock,
-                        e.target.dataset.par,
-                      ])
-                    }
-                    data-name={name}
-                    type="submit"
-                    className="btn"
-                  >
-                    {name}
-                  </Button>
-                </form>
-              </div>
-            );
-          } else if (tmr === "Friday") {
-            return (
-              <table className="customTable">
-                <tbody>
-                  <tr>
-                    <td>{name}</td>
-                    <td>{Friday}</td>
-                  </tr>
-                </tbody>
-              </table>
-            );
-          } else if (tmr === "Saturday") {
-            return (
-              <table className="customTable">
-                <tbody>
-                  <tr>
-                    <td>{name}</td>
-                    <td>{Saturday}</td>
-                  </tr>
-                </tbody>
-              </table>
-            );
-          }
-        })}
+                  <table className="customTable">
+                    <tbody>
+                      <tr>
+                        <span>
+                          <InputText
+                            placeholder={name}
+                            value={name}
+                            defaultValue={name}
+                            type="text"
+                            name={name}
+                          ></InputText>
 
-        <div className="newList">
-          <a>{this.curr}</a>
-        </div>
-      </Card>
+                          <input
+                            placeholder="0"
+                            onChange={this.handleChange}
+                            type="number"
+                            name={name}
+                          ></input>
+                          <Button>Make List</Button>
+                        </span>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              );
+            } else if (tmr === "Wednesday") {
+              return (
+                <div className="list-wrap-div">
+                  <form onSubmit={this.handleSubmit}>
+                    <input
+                      name="stock"
+                      data-stock={name}
+                      data-par={Wednesday}
+                      type="number"
+                      max={Wednesday}
+                      min="0"
+                      onChange={this.valueChange}
+                    ></input>
+                    <Button
+                      value={name}
+                      id={name}
+                      name={name}
+                      onClick={this.handleSubmit}
+                      data-name={name}
+                      type="submit"
+                      className="btn"
+                    >
+                      {name}
+                    </Button>
+                  </form>
+                </div>
+              );
+            } else if (tmr === "Thursday") {
+              return (
+                <div>
+                  <form onSubmit={this.handleSubmit}>
+                    <div>
+                      {" "}
+                      <input
+                        name="stock"
+                        data-stock={name}
+                        data-par={Thursday}
+                        data-unit={unit}
+                        type="number"
+                        max={Thursday}
+                        min="0"
+                        onChange={this.valueChange}
+                      ></input>
+                    </div>
+                    <div>
+                      {" "}
+                      <Button
+                        data-stock={name}
+                        data-par={Thursday}
+                        data-name={name}
+                        value={name}
+                        id={name}
+                        name={name}
+                        data-name={name}
+                        className="btn"
+                        onClick={(e) =>
+                          this.props.addToList([
+                            e.target.value,
+                            e.target.dataset.stock,
+                            e.target.dataset.par,
+                            e.target.dataset.unit,
+                          ])
+                        }
+                        data-name={name}
+                        type="submit"
+                        className="btn"
+                      >
+                        {name}
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              );
+            } else if (tmr === "Friday") {
+              return (
+                <table className="customTable">
+                  <tbody>
+                    <tr>
+                      <td>{name}</td>
+                      <td>{Friday}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              );
+            } else if (tmr === "Saturday") {
+              return (
+                <table className="customTable">
+                  <tbody>
+                    <tr>
+                      <td>{name}</td>
+                      <td>{Saturday}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              );
+            }
+          })}
+
+          <div className="newList">
+            <a>{this.curr}</a>
+          </div>
+        </Card>
+      </div>
     );
   }
 }
