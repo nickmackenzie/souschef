@@ -183,14 +183,30 @@ class MakeList extends Component {
             );
           } else if (tmr === "Thursday") {
             return (
-              <table className="customTable">
-                <tbody>
-                  <tr>
-                    <td>{name}</td>
-                    <td>{Thursday}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="list-wrap-div">
+                <form onSubmit={this.handleSubmit}>
+                  <input
+                    name="stock"
+                    data-stock={name}
+                    data-par={Thursday}
+                    type="number"
+                    max={Thursday}
+                    min="0"
+                    onChange={this.valueChange}
+                  ></input>
+                  <Button
+                    value={name}
+                    id={name}
+                    name={name}
+                    onClick={this.handleSubmit}
+                    data-name={name}
+                    type="submit"
+                    className="btn"
+                  >
+                    {name}
+                  </Button>
+                </form>
+              </div>
             );
           } else if (tmr === "Friday") {
             return (

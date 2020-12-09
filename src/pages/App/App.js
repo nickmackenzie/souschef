@@ -89,8 +89,6 @@ class App extends Component {
     this.getDayOfWeek();
     this.getItems();
     this.getListItems();
-    // const rt = itemService.findItems();
-    // console.log(rt);
   }
 
   render() {
