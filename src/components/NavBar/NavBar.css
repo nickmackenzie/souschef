@@ -4,6 +4,7 @@
   background-color: white;
   padding: 1em;
   border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .links {
@@ -28,7 +29,7 @@
   font-weight: 500;
   padding: 1rem;
   border-radius: 8px;
-  background-color: #3f51b5;
+  background-color: #006cec;
   font-weight: 500;
   letter-spacing: 1px;
 }

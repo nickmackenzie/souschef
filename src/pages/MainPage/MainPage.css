@@ -1,59 +1,20 @@
-.card {
-  min-width: 300px;
-  min-height: 50px;
-  max-height: 120px;
-  padding: 2px;
-}
-
-.item-wrap {
-  margin: 5px;
-  margin-top: 90px;
-  transition: opacity 0.5s;
-}
-
-.delete-button {
-  padding: 10px;
-  border: none;
-  margin: 10px;
-  cursor: pointer;
-  background-color: #099268;
-  border-radius: 5px;
-}
-ul {
-  display: flex;
-  justify-content: center;
-}
-li {
-  font-size: 1.4rem;
-  list-style: none;
-}
-
-.LoginPage {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.prep-color {
-  color: red;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
+.toast-style {
+  max-width: 200px;
 }
 
 .parent {
+  min-width: 300px;
+}
+
+.box-todo {
+  margin: 10px;
+}
+
+.item-wrap {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.child-card {
-  flex: 0 1 250px; /*  No stretching: */
-  margin: 5px;
-}
-
-.toast-style {
-  max-width: 200px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
 }

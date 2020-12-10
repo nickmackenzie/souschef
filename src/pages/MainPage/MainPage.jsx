@@ -7,6 +7,7 @@ import DelBtn from "../../components/DelBtn/DelBtn";
 import { Fieldset } from "primereact/fieldset";
 import axios from "axios";
 import { deleteItem } from "../../utilities/listService";
+import { Button } from "primereact/button";
 
 class MainPage extends Component {
   constructor() {
@@ -17,17 +18,13 @@ class MainPage extends Component {
   }
 
   deleteData = async (id) => {
-    console.log("id", id.target.dataset.index);
     let array = [...this.state.list];
     let idc = id.target.dataset.index;
     array.splice(idc, 1);
-    console.log("new", array);
     this.setState({ list: array }, () => {
       console.log("dealersOverallTotal1");
     });
-    console.log(id.target.dataset.id);
     let itmId = id.target.dataset.id;
-    console.log(this.state);
     await deleteItem(itmId);
   };
 
@@ -45,33 +42,30 @@ class MainPage extends Component {
 
   renderList() {
     let x = this.renderList.bind(this);
-    console.log("prp", this.state.list);
     let stateList = this.state.list;
     if (stateList != null) {
       return (
         <div className="parent">
           {stateList.map((item, idx) => {
             let inde = idx;
-            console.log(item);
             let itm = item.item;
             let stk = item.stock;
             let par = item.par;
             let prep = par - stk;
             let id = item._id;
             let unit = item.unit;
-            return (
-              <Card className="child-card">
+            if (prep != 0) {
+              return (
                 <div className="item-wrap">
-                  <div>
-                    <ul>
-                      <li>
-                        {" "}
-                        {itm} Prep: <span className="prep-color">{prep}</span>{" "}
-                        {unit}
-                      </li>
-                    </ul>
-                  </div>
-                  <button
+                  <span>{itm}</span>
+                  <span>
+                    Prep:{" "}
+                    <span className="prep-color">
+                      {prep} {unit}{" "}
+                    </span>
+                  </span>
+
+                  <Button
                     data-id={id}
                     data-index={inde}
                     value={id}
@@ -80,10 +74,10 @@ class MainPage extends Component {
                     className="delete-button"
                   >
                     <i class="fas fa-check"></i>
-                  </button>
+                  </Button>
                 </div>
-              </Card>
-            );
+              );
+            }
           })}
         </div>
       );
@@ -98,11 +92,9 @@ class MainPage extends Component {
 
   render() {
     return (
-      <div>
-        <Card className="LoginPage">
-          <div className="box">{this.renderList()}</div>
-        </Card>
-      </div>
+      <Card>
+        <div className="box-todo">{this.renderList()}</div>
+      </Card>
     );
   }
 }
