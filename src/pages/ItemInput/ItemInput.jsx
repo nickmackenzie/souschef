@@ -81,9 +81,9 @@ class ItemInput extends Component {
     ];
 
     return (
-      <div>
+      <div className="input-wrap">
         <Toast ref={(el) => (this.toast = el)} position="top-left"></Toast>
-        <Card className="itemInput">
+        <Card className="itemInput" header="Add A Item To The Menu">
           <form onSubmit={this.handleSubmit}>
             Add A Item
             <InputText
@@ -108,92 +108,88 @@ class ItemInput extends Component {
               onChange={this.handleChange}
             />
             <div className="par-wrap">
-              <div>
-                <table className="dateTable">
-                  <tbody>
-                    <tr>
-                      <th>Sun</th>
-                      <th>Mon</th>
-                      <th>Tues</th>
-                      <th>Wed</th>
-                      <th>Thurs</th>
-                      <th>Fri</th>
-                      <th>Sat</th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Sunday}
-                          name="Sunday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Monday}
-                          name="Monday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Tuesday}
-                          name="Tuesday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Wednesday}
-                          name="Wednesday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Friday}
-                          name="Friday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Thursday}
-                          name="Thursday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                      <td>
-                        <InputText
-                          className="par-day"
-                          type="number"
-                          placeholder="0"
-                          value={this.state.Saturday}
-                          name="Saturday"
-                          onChange={this.handleChange}
-                        ></InputText>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="par-box">
+                <div>Sun</div>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Sunday}
+                  name="Sunday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div className="par-box">
+                <div>Mon</div>
+
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Monday}
+                  name="Monday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div className="par-box">
+                <div>Tues</div>
+
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Tuesday}
+                  name="Tuesday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div className="par-box">
+                <div>Wed</div>
+
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Wednesday}
+                  name="Wednesday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div className="par-box">
+                <div>Thurs</div>
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Thursday}
+                  name="Thursday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+              <div className="par-box">
+                <div>Fri</div>
+
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Friday}
+                  name="Friday"
+                  onChange={this.handleChange}
+                ></InputText>
+              </div>
+
+              <div className="par-box">
+                <div>Sat</div>
+
+                <InputText
+                  className="par-day"
+                  type="number"
+                  placeholder="0"
+                  value={this.state.Saturday}
+                  name="Saturday"
+                  onChange={this.handleChange}
+                ></InputText>
               </div>
             </div>
             <div className="p-mt-4">

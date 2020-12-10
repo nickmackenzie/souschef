@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
 }
 .wave-container {
   position: relative;
@@ -11,4 +12,14 @@ body {
 }
 .wave-container > svg {
   display: block;
+}
+
+.nav-bar {
+  border-radius: 8px;
+}
+
+.side-btn {
+  top: 20%;
+  position: absolute;
+  margin-top: 100px;
 }

@@ -12,18 +12,16 @@ form {
 
 .par-wrap {
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
-div {
+.par-box {
   margin: 2px;
+  text-align: center;
+  font-weight: 600;
 }
-
-.par-day {
-  max-width: 60px;
-}
-
 table.dateTable {
   width: 100%;
   background-color: #ffffff;
@@ -34,6 +32,9 @@ table.dateTable {
   color: #333333;
   border-radius: 5px;
 }
+input[type="number"] {
+  max-width: 50px;
+}
 
 table.dateTable td,
 table.dateTable th {
@@ -41,4 +42,14 @@ table.dateTable th {
   border-color: #3333333d;
   border-style: solid;
   padding: 2px;
+}
+
+.input-wrap {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  text-align: center;
+  margin: 0 auto;
 }

@@ -6,15 +6,11 @@
 }
 
 .item-wrap {
-  flex: 0 1 150px; /*  No stretching: */
   margin: 5px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.623);
+  margin-top: 90px;
+  transition: opacity 0.5s;
 }
-.p-card-content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+
 .delete-button {
   padding: 10px;
   border: none;
@@ -56,4 +52,8 @@ li {
 .child-card {
   flex: 0 1 250px; /*  No stretching: */
   margin: 5px;
+}
+
+.toast-style {
+  max-width: 200px;
 }

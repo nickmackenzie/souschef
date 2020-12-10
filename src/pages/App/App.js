@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import { Sidebar } from "primereact/sidebar";
+import { Button } from "primereact/button";
+import { Route, Switch, Link } from "react-router-dom";
 
-import { Route, Switch } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
 import NavBar from "../../components/NavBar/NavBar";
@@ -11,11 +13,10 @@ import userService from "../../utilities/userService";
 import listService from "../../utilities/listService";
 import tokenService from "../../utilities/tokenService";
 import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/mdc-light-indigo/theme.css";
+import "primereact/resources/themes/saga-green/theme.css";
 import "primeicons/primeicons.css";
 import ItemInput from "../ItemInput/ItemInput";
 import MakeList from "../MakeList/MakeList";
-import itemService from "../../utilities/itemService";
 
 class App extends Component {
   constructor() {
@@ -93,6 +94,22 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
           className="nav-bar"
+        />
+        <Sidebar
+          visible={this.state.visible}
+          onHide={() => this.setState({ visible: false })}
+        >
+          <Link to="" className="NavBar-link" onClick={this.handleLogout}>
+            Log Out
+          </Link>
+          <Link className="NavBar-link" to="/iteminput">
+            Item Input
+          </Link>
+        </Sidebar>
+        <Button
+          icon="pi pi-arrow-right"
+          className="side-btn"
+          onClick={(e) => this.setState({ visible: true })}
         />
         <Switch>
           <Route

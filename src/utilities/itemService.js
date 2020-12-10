@@ -13,7 +13,7 @@ function makeList(list) {
     .then((data) => data);
 }
 
-function addItem(item, stock) {
+function addItem(item) {
   return fetch(BASE_URL + "addItem", {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),
