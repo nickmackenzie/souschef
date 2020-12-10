@@ -18,3 +18,31 @@
   padding: 10px;
   margin: 10px;
 }
+
+.prep-list-title {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2.8rem;
+}
+
+.prep-card {
+  padding: 0.7em;
+}
+
+.name-span {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+  margin: 20px;
+}
+
+.prep-span {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2rem;
+}
+
+.prep-color {
+  color: red;
+}
+
+.delete-button {
+  margin: 10px;
+}

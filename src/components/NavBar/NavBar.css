@@ -1,25 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 .navWrap {
-  text-align: center;
   min-width: 360px;
   background-color: white;
   padding: 1em;
   border-radius: 8px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .links {
   display: flex;
   justify-content: space-evenly;
   text-decoration: none;
-}
-
-.logo {
-  font-size: 2.2rem;
-  color: white;
-  font-weight: 700;
-  padding: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 .NavBar-link {
@@ -35,5 +28,7 @@
 }
 
 .nav-logo {
-  font-size: 2rem;
+  font-family: "Bebas Neue", cursive !important;
+  letter-spacing: 2px;
+  font-size: 3rem;
 }

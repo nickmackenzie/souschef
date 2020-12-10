@@ -6,7 +6,7 @@ const NavBar = (props) => {
   let nav = props.user ? (
     <nav className="navWrap">
       <div className="nav-logo">
-        <span className="sous">Sous</span>
+        <span className="sous">Sous </span>
         <span className="chef">Chef</span>
       </div>
 

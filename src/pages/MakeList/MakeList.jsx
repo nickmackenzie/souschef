@@ -3,7 +3,6 @@ import "primeflex/primeflex.css";
 import itemService from "../../utilities/itemService";
 import axios from "axios";
 import { Card } from "primereact/card";
-import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { Accordion, AccordionTab } from "primereact/accordion";

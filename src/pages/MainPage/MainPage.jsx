@@ -48,7 +48,7 @@ class MainPage extends Component {
     let stateList = this.state.list;
     if (stateList != null) {
       return (
-        <div className="parent">
+        <div header="Todays Prep List" className="parent">
           {stateList.map((item, idx) => {
             let inde = idx;
             let itm = item.item;
@@ -60,13 +60,14 @@ class MainPage extends Component {
             if (prep !== 0) {
               return (
                 <div className="item-wrap" key={id}>
-                  <span>{itm}</span>
-                  <span>
-                    Prep:{" "}
-                    <span className="prep-color">
-                      {prep} {unit}{" "}
+                  <span className="name-span"> {itm} </span>
+                  <div>
+                    {" "}
+                    <span className="prep-span">
+                      Prep: <span className="prep-color">{prep} </span>
+                      {unit}{" "}
                     </span>
-                  </span>
+                  </div>
 
                   <Button
                     data-id={id}
@@ -85,13 +86,17 @@ class MainPage extends Component {
         </div>
       );
     }
+
     return <div>Please Wait..</div>;
   }
 
   render() {
     return (
-      <Card>
-        <div className="box-todo">{this.renderList()}</div>
+      <Card className="prep-card">
+        <h1 className="prep-list-title">{this.props.day}'s List</h1>
+        <div Header="Todays Prep List" className="box-todo">
+          {this.renderList()}
+        </div>
       </Card>
     );
   }
