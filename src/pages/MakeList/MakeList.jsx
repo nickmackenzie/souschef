@@ -1576,6 +1576,7 @@ class MakeList extends Component {
                     max={Friday}
                     min="0"
                     onChange={this.valueChange}
+                    inputMode="numeric"
                   ></input>
                 </div>
                 <div>
