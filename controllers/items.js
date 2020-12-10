@@ -4,22 +4,30 @@ const List = require("../models/list");
 async function addItem(req, res) {
   const item = new Item(req.body);
   try {
-    await item.save();
+    res.status(200).json(item);
+    await item.save(function (err, item) {
+      if (err) res.send(err);
+
+      res.status(200).json(item);
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 }
 
-function makeList(req, res) {
-  console.log("body", req.body);
+async function makeList(req, res) {
   const list = new List({
     item: req.body.newList[1],
     stock: req.body.newList[0],
     par: req.body.newList[2],
     unit: req.body.newList[3],
   });
+
   try {
-    list.save();
+    await list.save(function (err, list) {
+      if (err) res.send(err);
+      res.status(200).json(list);
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -27,7 +35,7 @@ function makeList(req, res) {
 
 async function getItems(req, res) {
   const items = await Item.find({});
-  res.json(items);
+  res.status(200).json(items);
 }
 
 module.exports = {

@@ -3,15 +3,13 @@ import "./App.css";
 import axios from "axios";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
 import NavBar from "../../components/NavBar/NavBar";
 import MainPage from "../MainPage/MainPage";
 import userService from "../../utilities/userService";
-import listService from "../../utilities/listService";
-import tokenService from "../../utilities/tokenService";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "primeicons/primeicons.css";
@@ -95,7 +93,6 @@ class App extends Component {
           handleLogout={this.handleLogout}
           className="nav-bar"
         />
-
         <Switch>
           <Route
             exact

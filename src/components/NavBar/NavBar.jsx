@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import { Sidebar } from "primereact/sidebar";
-import { Button } from "primereact/button";
 
 const NavBar = (props) => {
   let nav = props.user ? (
@@ -19,6 +17,9 @@ const NavBar = (props) => {
 
         <Link className="NavBar-link" to="/makelist">
           New List
+        </Link>
+        <Link className="NavBar-link" to="/iteminput">
+          New Item
         </Link>
       </div>
     </nav>

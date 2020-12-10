@@ -8,7 +8,7 @@ async function findListItems() {
 
 async function delFromList(e) {
   return await fetch(BASE_URL + "delListItem")
-    .then((res) => res.jsnon)
+    .then((res) => res(200).jsnon)
     .then((data) => data);
 }
 

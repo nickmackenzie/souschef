@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import itemService from "../../utilities/itemService";
 import "./ItemInput.css";
 import { InputText } from "primereact/inputtext";

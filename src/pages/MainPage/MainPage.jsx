@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import "./MainPage.css";
-import PrepList from "../../components/PrepList/PrepList";
-import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
-import DelBtn from "../../components/DelBtn/DelBtn";
-import { Fieldset } from "primereact/fieldset";
 import axios from "axios";
 import { deleteItem } from "../../utilities/listService";
 import { Button } from "primereact/button";
@@ -13,10 +9,18 @@ class MainPage extends Component {
   constructor() {
     super();
     this.state = {
-      list: this.getListItems(),
+      list: null,
     };
   }
-
+  componentDidMount() {
+    this.getListItems();
+    this.renderList();
+  }
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
   deleteData = async (id) => {
     let array = [...this.state.list];
     let idc = id.target.dataset.index;
@@ -41,7 +45,6 @@ class MainPage extends Component {
   };
 
   renderList() {
-    let x = this.renderList.bind(this);
     let stateList = this.state.list;
     if (stateList != null) {
       return (
@@ -54,9 +57,9 @@ class MainPage extends Component {
             let prep = par - stk;
             let id = item._id;
             let unit = item.unit;
-            if (prep != 0) {
+            if (prep !== 0) {
               return (
-                <div className="item-wrap">
+                <div className="item-wrap" key={id}>
                   <span>{itm}</span>
                   <span>
                     Prep:{" "}
@@ -83,11 +86,6 @@ class MainPage extends Component {
       );
     }
     return <div>Please Wait..</div>;
-  }
-
-  async componentDidMount() {
-    this.getListItems();
-    await this.renderList();
   }
 
   render() {

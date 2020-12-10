@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "primeflex/primeflex.css";
-import { Link } from "react-router-dom";
 import itemService from "../../utilities/itemService";
 import axios from "axios";
 import { Card } from "primereact/card";
@@ -89,16 +88,6 @@ class MakeList extends Component {
       <div>
         <Card header={`Make ${this.props.tmr}'s List`} className="make-wrap">
           <Toast ref={(el) => (this.toast = el)} />
-          {/* {this.state.current.map((curr) => {
-          return (
-            <div>
-              <ol>
-                <li>{curr}</li>
-                <li></li>
-              </ol>
-            </div>
-          );
-        })} */}
           {this.state.items.map((item) => {
             let name = item.item;
             let Sunday = item.Sunday;
@@ -192,8 +181,6 @@ class MakeList extends Component {
                       {" "}
                       <input
                         name="stock"
-                        data-stock={name}
-                        data-par={Thursday}
                         data-unit={unit}
                         type="number"
                         max={Thursday}
@@ -210,7 +197,6 @@ class MakeList extends Component {
                         value={name}
                         id={name}
                         name={name}
-                        data-name={name}
                         className="btn"
                         onClick={(e) =>
                           this.props.addToList([
@@ -232,7 +218,7 @@ class MakeList extends Component {
               );
             } else if (tmr === "Friday") {
               return (
-                <div className="item-container">
+                <div className="item-container" key={name}>
                   <form className="form-con" onSubmit={this.handleSubmit}>
                     {" "}
                     <input

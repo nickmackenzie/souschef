@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import itemService from "../../utilities/itemService";
 import { deleteItem } from "../../utilities/listService";
 import axios from "axios";
 import { Button } from "primereact/button";
