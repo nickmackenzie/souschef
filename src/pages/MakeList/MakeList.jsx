@@ -83,6 +83,18 @@ class MakeList extends Component {
     }
   };
 
+  getMeat = () => {
+    const meatArray = this.state.items;
+    meatArray.map((item, indx) => {
+      console.log("pog", item);
+      const name = item.item;
+      console.log("name", name);
+      if (item.category == "meat") {
+        return <div>{name}</div>;
+      }
+    });
+  };
+
   render() {
     return (
       <Card header={`Make ${this.props.tmr}'s List`} className="make-wrap">
@@ -90,22 +102,7 @@ class MakeList extends Component {
           activeIndex={this.state.activeIndex}
           onTabChange={(e) => this.setState({ activeIndex: e.index })}
         >
-          <AccordionTab header="🍗 Meat">
-            {this.state.items.map((item) => {
-              let name = item.item;
-              let Sunday = item.Sunday;
-              let Monday = item.Monday;
-              let Tuesday = item.Tuesday;
-              let Wednesday = item.Wednesday;
-              let Thursday = item.Thursday;
-              let Friday = item.Friday;
-              let Saturday = item.Saturday;
-              let unit = item.unit;
-              let tmr = this.props.tmr;
-              let category = item.category;
-              return <div>{name}</div>;
-            })}
-          </AccordionTab>
+          <AccordionTab header="🍗 Meat">{this.getMeat()}</AccordionTab>
           <AccordionTab header="🐮 Dairy">Content II</AccordionTab>
           <AccordionTab header="🥦 Produce">Content III</AccordionTab>
           <AccordionTab header="🍞 Dry Goods">Content III</AccordionTab>
