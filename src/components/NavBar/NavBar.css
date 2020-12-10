@@ -1,14 +1,9 @@
 .navWrap {
-  padding-top: 10px;
-  padding-bottom: 70px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-
+  min-width: 360px;
   background-color: white;
-  height: 60px;
+  padding: 1em;
   border-radius: 8px;
-  margin: 10px;
 }
 
 .links {

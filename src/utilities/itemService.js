@@ -1,16 +1,20 @@
 const BASE_URL = "/api/items/";
 
 function makeList(list) {
-  return fetch(BASE_URL + "makeList", {
-    method: "POST",
-    headers: new Headers({ "Content-Type": "application/json" }),
-    body: JSON.stringify(list),
-  })
-    .then((res) => {
-      if (res.ok) return res.json();
-      throw new Error("Error While Making List.");
+  try {
+    return fetch(BASE_URL + "makeList", {
+      method: "POST",
+      headers: new Headers({ "Content-Type": "application/json" }),
+      body: JSON.stringify(list),
     })
-    .then((data) => data);
+      .then((res) => {
+        if (res) res.status(200).json();
+        throw new Error("Error While Making List.");
+      })
+      .then((data) => data);
+  } catch {
+    console.log("err");
+  }
 }
 
 function addItem(item) {
@@ -20,14 +24,14 @@ function addItem(item) {
     body: JSON.stringify(item),
   })
     .then((res) => {
-      if (res.ok) return res.json();
+      if (res) return res.status(200).json();
       throw new Error("Item In Database");
     })
     .then((data) => data);
 }
 
-export async function findItems(list) {
-  return await fetch(BASE_URL + "findItems")
+export function findItems(list) {
+  return fetch(BASE_URL + "findItems")
     .then((res) => res.json)
     .then((data) => data);
 }

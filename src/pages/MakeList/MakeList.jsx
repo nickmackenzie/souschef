@@ -86,20 +86,19 @@ class MakeList extends Component {
 
   render() {
     return (
-      <div className="p-grid">
-        <Card className="make-wrap">
-          <h1>Make {this.props.tmr}'s List</h1>
+      <div>
+        <Card header={`Make ${this.props.tmr}'s List`} className="make-wrap">
           <Toast ref={(el) => (this.toast = el)} />
-          {this.state.current.map((curr) => {
-            return (
-              <div>
-                <ol>
-                  <li>{curr}</li>
-                  <li></li>
-                </ol>
-              </div>
-            );
-          })}
+          {/* {this.state.current.map((curr) => {
+          return (
+            <div>
+              <ol>
+                <li>{curr}</li>
+                <li></li>
+              </ol>
+            </div>
+          );
+        })} */}
           {this.state.items.map((item) => {
             let name = item.item;
             let Sunday = item.Sunday;
@@ -233,21 +232,19 @@ class MakeList extends Component {
               );
             } else if (tmr === "Friday") {
               return (
-                <div>
-                  <form onSubmit={this.handleSubmit}>
-                    <div>
-                      {" "}
-                      <input
-                        name="stock"
-                        data-stock={name}
-                        data-par={Friday}
-                        data-unit={unit}
-                        type="number"
-                        max={Friday}
-                        min="0"
-                        onChange={this.valueChange}
-                      ></input>
-                    </div>
+                <div className="item-container">
+                  <form className="form-con" onSubmit={this.handleSubmit}>
+                    {" "}
+                    <input
+                      name="stock"
+                      data-stock={name}
+                      data-par={Friday}
+                      data-unit={unit}
+                      type="number"
+                      max={Friday}
+                      min="0"
+                      onChange={this.valueChange}
+                    ></input>
                     <div>
                       {" "}
                       <Button
@@ -290,10 +287,6 @@ class MakeList extends Component {
               );
             }
           })}
-
-          <div className="newList">
-            <a>{this.curr}</a>
-          </div>
         </Card>
       </div>
     );

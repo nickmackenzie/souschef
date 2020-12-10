@@ -5,14 +5,12 @@ const Item = require("../../models/item");
 const itemCtrl = require("../../controllers/items");
 const listCtrl = require("../../controllers/list");
 const user = require("../../models/user");
+router.get("/getItems", itemCtrl.getItems);
+router.get("/getList", listCtrl.getDayList);
 
 router.post("/addItem", itemCtrl.addItem);
 
 router.post("/makeList", itemCtrl.makeList);
-
-router.get("/getItems", itemCtrl.getItems);
-
-router.get("/getList", listCtrl.getDayList);
 
 router.delete("/delListItem/:id", listCtrl.delList);
 

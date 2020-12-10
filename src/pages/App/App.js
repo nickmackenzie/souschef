@@ -13,7 +13,7 @@ import userService from "../../utilities/userService";
 import listService from "../../utilities/listService";
 import tokenService from "../../utilities/tokenService";
 import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/saga-green/theme.css";
+import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import "primeicons/primeicons.css";
 import ItemInput from "../ItemInput/ItemInput";
 import MakeList from "../MakeList/MakeList";
@@ -95,22 +95,7 @@ class App extends Component {
           handleLogout={this.handleLogout}
           className="nav-bar"
         />
-        <Sidebar
-          visible={this.state.visible}
-          onHide={() => this.setState({ visible: false })}
-        >
-          <Link to="" className="NavBar-link" onClick={this.handleLogout}>
-            Log Out
-          </Link>
-          <Link className="NavBar-link" to="/iteminput">
-            Item Input
-          </Link>
-        </Sidebar>
-        <Button
-          icon="pi pi-arrow-right"
-          className="side-btn"
-          onClick={(e) => this.setState({ visible: true })}
-        />
+
         <Switch>
           <Route
             exact

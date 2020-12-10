@@ -2,9 +2,9 @@ const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
-
+var cors = require("cors");
 const app = express();
-
+app.use(cors());
 require("dotenv").config();
 
 require("./config/database");

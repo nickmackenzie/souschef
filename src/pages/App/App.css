@@ -18,8 +18,8 @@ body {
   border-radius: 8px;
 }
 
-.side-btn {
-  top: 20%;
-  position: absolute;
-  margin-top: 100px;
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
