@@ -6,7 +6,7 @@ import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
-
+import { Accordion, AccordionTab } from "primereact/accordion";
 import "./MakeList.css";
 
 class MakeList extends Component {
@@ -85,196 +85,33 @@ class MakeList extends Component {
 
   render() {
     return (
-      <div>
-        <Card header={`Make ${this.props.tmr}'s List`} className="make-wrap">
-          <Toast ref={(el) => (this.toast = el)} />
-          {this.state.items.map((item) => {
-            let name = item.item;
-            let Sunday = item.Sunday;
-            let Monday = item.Monday;
-            let Tuesday = item.Tuesday;
-            let Wednesday = item.Wednesday;
-            let Thursday = item.Thursday;
-            let Friday = item.Friday;
-            let Saturday = item.Saturday;
-            let unit = item.unit;
-            let tmr = this.props.tmr;
-            if (tmr === "Sunday") {
-              return (
-                <Card>
-                  <form>
-                    <h1>{name}</h1>
-                  </form>
-                </Card>
-              );
-            } else if (tmr === "Monday") {
-              return (
-                <table className="customTable">
-                  <tbody>
-                    <tr>
-                      <td>{name}</td>
-                      <td>{Monday}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              );
-            } else if (tmr === "Tuesday") {
-              return (
-                <form onSubmit={this.handleSubmit}>
-                  <table className="customTable">
-                    <tbody>
-                      <tr>
-                        <span>
-                          <InputText
-                            placeholder={name}
-                            value={name}
-                            defaultValue={name}
-                            type="text"
-                            name={name}
-                          ></InputText>
-
-                          <input
-                            placeholder="0"
-                            onChange={this.handleChange}
-                            type="number"
-                            name={name}
-                          ></input>
-                          <Button>Make List</Button>
-                        </span>
-                      </tr>
-                    </tbody>
-                  </table>
-                </form>
-              );
-            } else if (tmr === "Wednesday") {
-              return (
-                <div className="list-wrap-div">
-                  <form onSubmit={this.handleSubmit}>
-                    <input
-                      name="stock"
-                      data-stock={name}
-                      data-par={Wednesday}
-                      type="number"
-                      max={Wednesday}
-                      min="0"
-                      onChange={this.valueChange}
-                    ></input>
-                    <Button
-                      value={name}
-                      id={name}
-                      name={name}
-                      onClick={this.handleSubmit}
-                      data-name={name}
-                      type="submit"
-                      className="btn"
-                    >
-                      {name}
-                    </Button>
-                  </form>
-                </div>
-              );
-            } else if (tmr === "Thursday") {
-              return (
-                <div>
-                  <form onSubmit={this.handleSubmit}>
-                    <div>
-                      {" "}
-                      <input
-                        name="stock"
-                        data-unit={unit}
-                        type="number"
-                        max={Thursday}
-                        min="0"
-                        onChange={this.valueChange}
-                      ></input>
-                    </div>
-                    <div>
-                      {" "}
-                      <Button
-                        data-stock={name}
-                        data-par={Thursday}
-                        data-name={name}
-                        value={name}
-                        id={name}
-                        name={name}
-                        className="btn"
-                        onClick={(e) =>
-                          this.props.addToList([
-                            e.target.value,
-                            e.target.dataset.stock,
-                            e.target.dataset.par,
-                            e.target.dataset.unit,
-                          ])
-                        }
-                        data-name={name}
-                        type="submit"
-                        className="btn"
-                      >
-                        {name}
-                      </Button>
-                    </div>
-                  </form>
-                </div>
-              );
-            } else if (tmr === "Friday") {
-              return (
-                <div className="item-container" key={name}>
-                  <form className="form-con" onSubmit={this.handleSubmit}>
-                    {" "}
-                    <input
-                      name="stock"
-                      data-stock={name}
-                      data-par={Friday}
-                      data-unit={unit}
-                      type="number"
-                      max={Friday}
-                      min="0"
-                      onChange={this.valueChange}
-                    ></input>
-                    <div>
-                      {" "}
-                      <Button
-                        data-stock={name}
-                        data-par={Friday}
-                        data-name={name}
-                        value={name}
-                        id={name}
-                        name={name}
-                        data-name={name}
-                        className="btn"
-                        onClick={(e) =>
-                          this.props.addToList([
-                            e.target.value,
-                            e.target.dataset.stock,
-                            e.target.dataset.par,
-                            e.target.dataset.unit,
-                          ])
-                        }
-                        data-name={name}
-                        type="submit"
-                        className="btn"
-                      >
-                        {name}
-                      </Button>
-                    </div>
-                  </form>
-                </div>
-              );
-            } else if (tmr === "Saturday") {
-              return (
-                <table className="customTable">
-                  <tbody>
-                    <tr>
-                      <td>{name}</td>
-                      <td>{Saturday}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              );
-            }
-          })}
-        </Card>
-      </div>
+      <Card header={`Make ${this.props.tmr}'s List`} className="make-wrap">
+        <Accordion
+          activeIndex={this.state.activeIndex}
+          onTabChange={(e) => this.setState({ activeIndex: e.index })}
+        >
+          <AccordionTab header="🍗 Meat">
+            {this.state.items.map((item) => {
+              let name = item.item;
+              let Sunday = item.Sunday;
+              let Monday = item.Monday;
+              let Tuesday = item.Tuesday;
+              let Wednesday = item.Wednesday;
+              let Thursday = item.Thursday;
+              let Friday = item.Friday;
+              let Saturday = item.Saturday;
+              let unit = item.unit;
+              let tmr = this.props.tmr;
+              let category = item.category;
+              return <div>{name}</div>;
+            })}
+          </AccordionTab>
+          <AccordionTab header="🐮 Dairy">Content II</AccordionTab>
+          <AccordionTab header="🥦 Produce">Content III</AccordionTab>
+          <AccordionTab header="🍞 Dry Goods">Content III</AccordionTab>
+          <AccordionTab header="🛒 Other">Content III</AccordionTab>
+        </Accordion>
+      </Card>
     );
   }
 }

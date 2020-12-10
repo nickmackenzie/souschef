@@ -6,11 +6,6 @@
   width: 360px;
 }
 
-.p-card-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
 .form-con {
   display: flex;
   justify-content: center;
@@ -24,4 +19,12 @@
 
 .p-card .p-card-body {
   padding: 0;
+}
+.pi-chevron-right {
+  display: none;
+}
+.p-accordion-header-text {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
 }
