@@ -21,6 +21,9 @@ const NavBar = (props) => {
         <Link className="NavBar-link" to="/iteminput">
           New Item
         </Link>
+        <Link to="" className="NavBar-link" onClick={props.handleLogout}>
+          Log Out
+        </Link>
       </div>
     </nav>
   ) : (

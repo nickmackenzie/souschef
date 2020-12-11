@@ -4,7 +4,8 @@ import { Card } from "primereact/card";
 import axios from "axios";
 import { deleteItem } from "../../utilities/listService";
 import { Button } from "primereact/button";
-
+import Lottie from "react-lottie-player";
+import { ProgressSpinner } from "primereact/progressspinner";
 class MainPage extends Component {
   constructor() {
     super();
@@ -21,6 +22,7 @@ class MainPage extends Component {
       return;
     };
   }
+
   deleteData = async (id) => {
     let array = [...this.state.list];
     let idc = id.target.dataset.index;
@@ -87,7 +89,11 @@ class MainPage extends Component {
       );
     }
 
-    return <div>Please Wait..</div>;
+    return (
+      <div>
+        <ProgressSpinner />
+      </div>
+    );
   }
 
   render() {
