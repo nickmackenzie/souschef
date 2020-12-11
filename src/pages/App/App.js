@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
-import { Sidebar } from "primereact/sidebar";
-import { Button } from "primereact/button";
 import { Route, Switch } from "react-router-dom";
-
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
 import NavBar from "../../components/NavBar/NavBar";

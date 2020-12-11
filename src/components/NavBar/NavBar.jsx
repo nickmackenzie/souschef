@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import Chef from "../../images/chef.svg";
-import { Dialog } from "primereact/dialog";
-import { Button } from "primereact/button";
+
 const NavBar = (props) => {
   let nav = props.user ? (
     <nav className="navWrap">
