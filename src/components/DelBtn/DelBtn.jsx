@@ -14,7 +14,6 @@ class DelBtn extends Component {
       .get("api/items/getList")
       .then((response) => {
         const data = response.data;
-        console.log(data);
         this.setState({ list: data });
       })
       .catch(() => {

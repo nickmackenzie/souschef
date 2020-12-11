@@ -72,7 +72,6 @@ class App extends Component {
       .get("api/items/getItems")
       .then((response) => {
         const data = response.data;
-        console.log(data);
         this.setState({ items: data });
       })
       .catch(() => {
@@ -96,7 +95,7 @@ class App extends Component {
         <Switch>
           <Route
             exact
-            path="/"
+            path="/main"
             render={() => (
               <MainPage
                 user={this.state.user}
@@ -115,6 +114,7 @@ class App extends Component {
               <LoginPage
                 history={history}
                 handleSignupOrLogin={this.handleSignupOrLogin}
+                className="loginpage"
               />
             )}
           />

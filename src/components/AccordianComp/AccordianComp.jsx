@@ -5,8 +5,6 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 class AccordionComp extends Component {
   constructor(props) {
     super(props);
-
-    console.log(this.props);
   }
   state = {
     list: null,

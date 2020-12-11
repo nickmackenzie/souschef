@@ -34,9 +34,6 @@ class MakeList extends Component {
         alert("err");
       });
   };
-  numberButtons = () => {
-    console.log("Hey");
-  };
   async componentDidMount() {
     this.getItems();
     await this.getListItems();
@@ -77,7 +74,6 @@ class MakeList extends Component {
   };
 
   handleSubmit = async (e) => {
-    console.log("target", e.target[0]);
     e.preventDefault();
 
     try {

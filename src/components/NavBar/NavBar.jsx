@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-
+import Chef from "../../images/chef.svg";
+import { Dialog } from "primereact/dialog";
+import { Button } from "primereact/button";
 const NavBar = (props) => {
   let nav = props.user ? (
     <nav className="navWrap">
@@ -11,7 +13,7 @@ const NavBar = (props) => {
       </div>
 
       <div className="links">
-        <Link className="NavBar-link" to="/">
+        <Link className="NavBar-link" to="/main">
           Home
         </Link>
 
@@ -24,14 +26,24 @@ const NavBar = (props) => {
       </div>
     </nav>
   ) : (
-    <div>
-      <Link to="/login" className="NavBar-link">
-        Log In
-      </Link>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <Link to="/register" className="NavBar-link">
-        Create Account
-      </Link>
+    <div className="navWrap-signin">
+      <div className="nav-logo">
+        <span className="sous">Sous </span>
+        <span className="chef">Chef</span>
+      </div>
+      <div className="loglink">
+        {" "}
+        <Link to="/login" className="NavBar-link">
+          Log In
+        </Link>
+      </div>
+      <div className="loglink">
+        {" "}
+        <Link to="/register" className="NavBar-link">
+          Create Account
+        </Link>
+      </div>
+      <div className="svg-wrap"> </div>
     </div>
   );
 

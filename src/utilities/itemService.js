@@ -1,7 +1,6 @@
 const BASE_URL = "/api/items/";
 
 function makeList(list) {
-  console.log("dsd", list);
   return fetch(BASE_URL + "makeList", {
     method: "POST",
     headers: new Headers({ "Content-Type": "application/json" }),

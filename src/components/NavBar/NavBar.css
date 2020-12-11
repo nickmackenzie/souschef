@@ -32,3 +32,26 @@
   letter-spacing: 2px;
   font-size: 3rem;
 }
+
+.navWrap-signin {
+  margin-top: 20px;
+  border-radius: 8px;
+  height: 250px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 300px;
+  padding: 1em;
+}
+
+.chef-svg {
+  height: 350px;
+  padding: 1em;
+}
+
+.loglink {
+  margin: 2em;
+}
+.svg-wrap {
+  display: flex;
+  justify-content: center;
+}
