@@ -15,10 +15,7 @@ class MakeList extends Component {
     this.state = {
       items: [],
       current: [],
-      newlist: {
-        item: [],
-        tmr: this.props.tmr,
-      },
+      val: 0,
     };
   }
   addToList = (e) => {
@@ -37,15 +34,21 @@ class MakeList extends Component {
         alert("err");
       });
   };
-
+  numberButtons = () => {
+    console.log("Hey");
+  };
   async componentDidMount() {
     this.getItems();
     await this.getListItems();
   }
-
+  formReset = () => {
+    this.setState({ newList: "" });
+  };
   valueChange = (e) => {
     e.preventDefault();
+    let count = this.state.val;
     this.setState((prevState) => ({
+      val: (count += 1),
       newList: [
         e.target.value,
         e.target.dataset.stock,
@@ -74,9 +77,11 @@ class MakeList extends Component {
   };
 
   handleSubmit = async (e) => {
+    console.log("target", e.target[0]);
     e.preventDefault();
 
     try {
+      this.formReset();
       this.toast.show({
         severity: "success",
         summary: "",
@@ -1575,6 +1580,7 @@ class MakeList extends Component {
                     type="number"
                     max={Friday}
                     min="0"
+                    defaultValue="0"
                     onChange={this.valueChange}
                     inputMode="numeric"
                   ></input>

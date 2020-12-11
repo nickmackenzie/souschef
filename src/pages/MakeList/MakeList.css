@@ -13,6 +13,11 @@
   flex-direction: column;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+}
+
 .p-card-header {
   font-size: 1.5rem;
 }
@@ -20,11 +25,21 @@
 .p-card .p-card-body {
   padding: 0;
 }
-.pi-chevron-right {
-  display: none;
-}
+
 .p-accordion-header-text {
   font-size: 1.5rem;
   text-transform: uppercase;
   text-align: center;
+}
+
+input[type="number"] {
+  font-size: 1.2rem;
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+.p-accordion-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
