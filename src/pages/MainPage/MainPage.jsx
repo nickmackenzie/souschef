@@ -4,7 +4,7 @@ import { Card } from "primereact/card";
 import axios from "axios";
 import { deleteItem } from "../../utilities/listService";
 import { Button } from "primereact/button";
-import Lottie from "react-lottie-player";
+import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
 class MainPage extends Component {
   constructor() {
@@ -24,14 +24,21 @@ class MainPage extends Component {
   }
 
   deleteData = async (id) => {
+    console.log("del", id.target.id);
+    let itmId = id.target.id;
+    await deleteItem(itmId);
     let array = [...this.state.list];
     let idc = id.target.dataset.index;
     array.splice(idc, 1);
     this.setState({ list: array }, () => {
       console.log("dealersOverallTotal1");
     });
-    let itmId = id.target.dataset.id;
-    await deleteItem(itmId);
+
+    this.toast.show({
+      severity: "success",
+      summary: "Done",
+      detail: "Item Done Prepping",
+    });
   };
 
   getListItems = () => {
@@ -76,7 +83,7 @@ class MainPage extends Component {
                     data-index={inde}
                     value={id}
                     id={id}
-                    onClick={this.deleteData.bind(this)}
+                    onClick={this.deleteData}
                     className="delete-button"
                   >
                     <i class="fas fa-check"></i>
@@ -99,6 +106,7 @@ class MainPage extends Component {
   render() {
     return (
       <Card className="prep-card">
+        <Toast className="toast" ref={(el) => (this.toast = el)} />
         <h1 className="prep-list-title">{this.props.day}'s List</h1>
         <div Header="Todays Prep List" className="box-todo">
           {this.renderList()}

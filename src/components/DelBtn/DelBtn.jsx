@@ -28,7 +28,7 @@ class DelBtn extends Component {
       console.log("dealersOverallTotal1");
     });
     let itmId = id.target.dataset.id;
-    await deleteItem(itmId);
+    deleteItem(itmId);
   };
   render() {
     return (

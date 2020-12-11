@@ -13,11 +13,12 @@ async function delFromList(e) {
 }
 
 export async function deleteItem(id) {
-  const response = await fetch(BASE_URL + `/delListItem/${id}`, {
+  const response = await fetch(BASE_URL + `delListItem/${id}`, {
     method: "DELETE",
   });
-  return response.json();
+  console.log("del");
 }
+
 export default {
   findListItems,
   delFromList,

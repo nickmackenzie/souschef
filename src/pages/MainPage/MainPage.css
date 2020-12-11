@@ -46,3 +46,7 @@
 .delete-button {
   margin: 10px;
 }
+
+.toast {
+  max-width: 200px;
+}
