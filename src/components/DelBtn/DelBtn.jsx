@@ -9,17 +9,20 @@ class DelBtn extends Component {
     index: this.props.index,
     list: [this.props.list],
   };
+
   getListItems = () => {
     axios
       .get("api/items/getList")
       .then((response) => {
         const data = response.data;
         this.setState({ list: data });
+        return data;
       })
       .catch(() => {
         alert("err");
       });
   };
+
   deleteData = async (id) => {
     let array = [...this.state.list];
     let idc = this.state.index;

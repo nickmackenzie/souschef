@@ -1,11 +1,11 @@
 const Item = require("../models/item");
 const List = require("../models/list");
 
-async function addItem(req, res) {
+function addItem(req, res) {
   const item = new Item(req.body);
   try {
     res.status(200).json(item);
-    await item.save(function (err, item) {
+    item.save(function (err, item) {
       if (err) res.send(err);
 
       res.status(200).json(item);

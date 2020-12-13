@@ -20,7 +20,6 @@ class App extends Component {
       user: userService.getUser(),
       day: null,
       tmr: null,
-      items: null,
       current: [],
     };
     this.addToList = this.addToList.bind(this);
@@ -64,21 +63,8 @@ class App extends Component {
     this.setState({ tmr: tmr });
   };
 
-  getItems = () => {
-    axios
-      .get("api/items/getItems")
-      .then((response) => {
-        const data = response.data;
-        this.setState({ items: data });
-      })
-      .catch(() => {
-        alert("err");
-      });
-  };
-
-  async componentDidMount() {
+  componentDidMount() {
     this.getDayOfWeek();
-    this.getItems();
   }
 
   render() {
@@ -98,8 +84,6 @@ class App extends Component {
                 user={this.state.user}
                 className="main"
                 day={this.state.day}
-                items={this.state.items}
-                list={this.state.list}
                 addToList={this.addToList}
               />
             )}

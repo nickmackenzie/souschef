@@ -34,30 +34,22 @@ class MakeList extends Component {
         alert("err");
       });
   };
-  async componentDidMount() {
+  componentDidMount() {
     this.getItems();
-    await this.getListItems();
+    this.getListItems();
   }
   formReset = () => {
     this.setState({ newList: "" });
   };
   valueChange = (e) => {
     e.preventDefault();
-    let count = this.state.val;
     this.setState((prevState) => ({
-      val: (count += 1),
       newList: [
         e.target.value,
         e.target.dataset.stock,
         e.target.dataset.par,
         e.target.dataset.unit,
       ],
-    }));
-  };
-
-  addToList = (e) => {
-    this.setState((prevState) => ({
-      [e.target.dataset.name]: [...prevState.current, e.target.dataset.name],
     }));
   };
 
@@ -350,7 +342,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "other" && tmr == "Wednesday") {
+      } else if (item.category === "other" && tmr === "Wednesday") {
         return (
           <div>
             {" "}
@@ -399,7 +391,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "other" && tmr == "Thursday") {
+      } else if (item.category === "other" && tmr === "Thursday") {
         return (
           <div>
             {" "}
@@ -469,7 +461,7 @@ class MakeList extends Component {
       let category = item.category;
       let tmr = this.props.tmr;
 
-      if (item.category == "dry goods" && tmr == "Friday") {
+      if (item.category === "dry goods" && tmr === "Friday") {
         return (
           <div>
             {" "}
@@ -518,7 +510,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dry goods" && tmr == "Saturday") {
+      } else if (item.category === "dry goods" && tmr === "Saturday") {
         return (
           <div>
             {" "}
@@ -567,7 +559,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dry goods" && tmr == "Sunday") {
+      } else if (item.category === "dry goods" && tmr === "Sunday") {
         return (
           <div>
             {" "}
@@ -616,7 +608,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dry goods" && tmr == "Monday") {
+      } else if (item.category === "dry goods" && tmr === "Monday") {
         return (
           <div>
             {" "}
@@ -665,7 +657,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dry goods" && tmr == "Tuesday") {
+      } else if (item.category === "dry goods" && tmr === "Tuesday") {
         return (
           <div>
             {" "}
@@ -714,7 +706,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dry goods" && tmr == "Wednesday") {
+      } else if (item.category === "dry goods" && tmr === "Wednesday") {
         return (
           <div>
             {" "}
@@ -763,7 +755,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dry goods" && tmr == "Thursday") {
+      } else if (item.category === "dry goods" && tmr === "Thursday") {
         return (
           <div>
             {" "}
@@ -832,7 +824,7 @@ class MakeList extends Component {
       let category = item.category;
       let tmr = this.props.tmr;
 
-      if (item.category == "produce" && tmr == "Friday") {
+      if (item.category === "produce" && tmr === "Friday") {
         return (
           <div>
             {" "}
@@ -881,7 +873,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "produce" && tmr == "Saturday") {
+      } else if (item.category === "produce" && tmr === "Saturday") {
         return (
           <div>
             {" "}
@@ -930,7 +922,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "produce" && tmr == "Sunday") {
+      } else if (item.category === "produce" && tmr === "Sunday") {
         return (
           <div>
             {" "}
@@ -979,7 +971,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "produce" && tmr == "Monday") {
+      } else if (item.category === "produce" && tmr === "Monday") {
         return (
           <div>
             {" "}
@@ -1028,7 +1020,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "produce" && tmr == "Tuesday") {
+      } else if (item.category === "produce" && tmr === "Tuesday") {
         return (
           <div>
             {" "}
@@ -1077,7 +1069,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "produce" && tmr == "Wednesday") {
+      } else if (item.category === "produce" && tmr === "Wednesday") {
         return (
           <div>
             {" "}
@@ -1126,7 +1118,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "produce" && tmr == "Thursday") {
+      } else if (item.category === "produce" && tmr === "Thursday") {
         return (
           <div>
             {" "}
@@ -1195,7 +1187,7 @@ class MakeList extends Component {
       let category = item.category;
       let tmr = this.props.tmr;
 
-      if (item.category == "dairy" && tmr == "Friday") {
+      if (item.category === "dairy" && tmr === "Friday") {
         return (
           <div>
             {" "}
@@ -1244,7 +1236,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dairy" && tmr == "Saturday") {
+      } else if (item.category === "dairy" && tmr === "Saturday") {
         return (
           <div>
             {" "}
@@ -1293,7 +1285,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dairy" && tmr == "Sunday") {
+      } else if (item.category === "dairy" && tmr === "Sunday") {
         return (
           <div>
             {" "}
@@ -1342,7 +1334,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dairy" && tmr == "Monday") {
+      } else if (item.category === "dairy" && tmr === "Monday") {
         return (
           <div>
             {" "}
@@ -1391,7 +1383,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dairy" && tmr == "Tuesday") {
+      } else if (item.category === "dairy" && tmr === "Tuesday") {
         return (
           <div>
             {" "}
@@ -1440,7 +1432,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dairy" && tmr == "Wednesday") {
+      } else if (item.category === "dairy" && tmr === "Wednesday") {
         return (
           <div>
             {" "}
@@ -1489,7 +1481,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "dairy" && tmr == "Thursday") {
+      } else if (item.category === "dairy" && tmr === "Thursday") {
         return (
           <div>
             {" "}
@@ -1559,7 +1551,7 @@ class MakeList extends Component {
       let category = item.category;
       let tmr = this.props.tmr;
 
-      if (item.category == "meat" && tmr == "Friday") {
+      if (item.category === "meat" && tmr === "Friday") {
         return (
           <div>
             {" "}
@@ -1610,7 +1602,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "meat" && tmr == "Saturday") {
+      } else if (item.category === "meat" && tmr === "Saturday") {
         return (
           <div>
             {" "}
@@ -1659,7 +1651,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "meat" && tmr == "Sunday") {
+      } else if (item.category === "meat" && tmr === "Sunday") {
         return (
           <div>
             {" "}
@@ -1708,7 +1700,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "meat" && tmr == "Monday") {
+      } else if (item.category === "meat" && tmr === "Monday") {
         return (
           <div>
             {" "}
@@ -1757,7 +1749,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "meat" && tmr == "Tuesday") {
+      } else if (item.category === "meat" && tmr === "Tuesday") {
         return (
           <div>
             {" "}
@@ -1806,7 +1798,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "meat" && tmr == "Wednesday") {
+      } else if (item.category === "meat" && tmr === "Wednesday") {
         return (
           <div>
             {" "}
@@ -1855,7 +1847,7 @@ class MakeList extends Component {
             </div>
           </div>
         );
-      } else if (item.category == "meat" && tmr == "Thursday") {
+      } else if (item.category === "meat" && tmr === "Thursday") {
         return (
           <div>
             {" "}

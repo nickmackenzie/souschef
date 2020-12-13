@@ -3,9 +3,9 @@ import "./MainPage.css";
 import { Card } from "primereact/card";
 import axios from "axios";
 import { deleteItem } from "../../utilities/listService";
-import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
+
 class MainPage extends Component {
   constructor() {
     super();
@@ -17,21 +17,16 @@ class MainPage extends Component {
     this.getListItems();
     this.renderList();
   }
-  componentWillUnmount() {
-    this.setState = (state, callback) => {
-      return;
-    };
-  }
 
   deleteData = async (id) => {
-    console.log("del", id.target.id);
+    console.log("del", id);
     let itmId = id.target.id;
-    await deleteItem(itmId);
+
     let array = [...this.state.list];
     let idc = id.target.dataset.index;
     array.splice(idc, 1);
     this.setState({ list: array }, () => {
-      console.log("dealersOverallTotal1");
+      deleteItem(itmId);
     });
 
     this.toast.show({
@@ -55,7 +50,7 @@ class MainPage extends Component {
 
   renderList() {
     let stateList = this.state.list;
-    if (stateList != null) {
+    if (stateList) {
       return (
         <div header="Todays Prep List" className="parent">
           {stateList.map((item, idx) => {
@@ -66,31 +61,30 @@ class MainPage extends Component {
             let prep = par - stk;
             let id = item._id;
             let unit = item.unit;
-            if (prep !== 0) {
-              return (
-                <div className="item-wrap" key={id}>
-                  <span className="name-span"> {itm} </span>
-                  <div>
-                    {" "}
-                    <span className="prep-span">
-                      Prep: <span className="prep-color">{prep} </span>
-                      {unit}{" "}
-                    </span>
-                  </div>
 
-                  <Button
-                    data-id={id}
-                    data-index={inde}
-                    value={id}
-                    id={id}
-                    onClick={this.deleteData}
-                    className="delete-button"
-                  >
-                    <i class="fas fa-check"></i>
-                  </Button>
+            return (
+              <div className="item-wrap" key={id}>
+                <span className="name-span"> {itm} </span>
+                <div>
+                  {" "}
+                  <span className="prep-span">
+                    Prep: <span className="prep-color">{prep} </span>
+                    {unit}{" "}
+                  </span>
                 </div>
-              );
-            }
+
+                <button
+                  data-id={id}
+                  data-index={inde}
+                  value={id}
+                  id={id}
+                  onClick={this.deleteData}
+                  className="delete-button"
+                >
+                  Done
+                </button>
+              </div>
+            );
           })}
         </div>
       );

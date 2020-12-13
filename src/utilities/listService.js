@@ -13,7 +13,8 @@ async function delFromList(e) {
 }
 
 export async function deleteItem(id) {
-  const response = await fetch(BASE_URL + `delListItem/${id}`, {
+  console.log("id", id);
+  await fetch(BASE_URL + `delListItem/${id}`, {
     method: "DELETE",
   });
   console.log("del");
